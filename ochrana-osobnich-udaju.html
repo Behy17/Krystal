@@ -3,18 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Časté dotazy — Krystal | podlahářství, renovace kamene a betonu</title>
-<meta name="description" content="Odpovědi na nejčastější dotazy k renovaci podlah, kamene a pohledového betonu — termíny, provoz, úklid i dojezd.">
+<title>Ochrana osobních údajů — Krystal</title>
+<meta name="description" content="Zásady zpracování osobních údajů — jaké údaje Krystal zpracovává, proč, jak dlouho je uchovává a jaká máte jako subjekt údajů práva.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-
 <style>
 /* ============================================================
-   KRYSTAL — stránka Časté dotazy
+   KRYSTAL — stránka Ochrana osobních údajů
    Sdílené bloky (tokeny, reset, hlavička, menu, CTA flip systém)
-   jsou zkopírované ze sluzby.html / index.html — stejný vzor
-   samostatných HTML souborů bez buildu jako zbytek webu.
+   jsou zkopírované z kontakt.html — stejný vzor samostatných
+   HTML souborů bez buildu jako zbytek webu.
    ============================================================ */
 
 /* --- 1. Design tokeny ------------------------------------- */
@@ -295,11 +294,11 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
 .page-title{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:clamp(2.2rem,5.4vw,4rem);
-  line-height:1.08;
+  font-size:clamp(2rem,4.6vw,3.4rem);
+  line-height:1.12;
   letter-spacing:-.005em;
   color:#fff;
-  max-width:18ch;
+  max-width:20ch;
 }
 .page-lead{
   margin-top:18px;
@@ -309,102 +308,46 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   color:rgba(255,255,255,.66);
 }
 
-/* --- 7. FAQ akordeon ----------------------------------------- */
-.faq-list{background:#fff;padding:clamp(48px,7vw,80px) 0 clamp(64px,9vw,110px)}
-.faq-item{
-  border-bottom:1px solid var(--line);
-  opacity:0;transform:translateY(16px);
-  transition:opacity .6s var(--ease-out), transform .6s var(--ease-out);
+/* --- 7. Obsah zásad ochrany osobních údajů -------------------- */
+.legal{
+  background:#fff;
+  padding:clamp(48px,7vw,80px) 0 clamp(72px,10vw,120px);
 }
-.faq-list.is-visible .faq-item{opacity:1;transform:none}
-.faq-item:first-child{border-top:1px solid var(--line)}
-
-.faq-question{
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-  width:100%;
-  padding:clamp(22px,3vw,30px) 0;
-  text-align:left;
-  font-family:var(--font-ui);
-  font-weight:600;
-  font-size:clamp(1.05rem,1.6vw,1.3rem);
-  color:var(--ink);
-  transition:color .25s var(--ease-out);
-}
-.faq-question:hover{color:var(--orange)}
-
-.faq-icon{
-  position:relative;
-  flex:0 0 auto;
-  width:22px;height:22px;
-  transition:transform .4s var(--ease-out);
-}
-.faq-icon span{
-  position:absolute;top:50%;left:50%;
-  background:var(--ink);
-  transform:translate(-50%,-50%);
-  transition:background .25s var(--ease-out);
-}
-.faq-icon span:first-child{width:16px;height:1.6px}
-.faq-icon span:last-child{width:1.6px;height:16px}
-.faq-item.is-open .faq-icon{transform:rotate(45deg)}
-.faq-question:hover .faq-icon span{background:var(--orange)}
-
-.faq-answer-wrap{
-  display:grid;
-  grid-template-rows:0fr;
-  transition:grid-template-rows .5s var(--ease-io);
-}
-.faq-item.is-open .faq-answer-wrap{grid-template-rows:1fr}
-.faq-answer-inner{overflow:hidden}
-.faq-answer{
-  max-width:74ch;
-  padding-bottom:clamp(22px,3vw,30px);
-  font-size:clamp(1rem,1.2vw,1.08rem);
-  line-height:1.7;
-  color:var(--ink-soft);
-}
-
-@media (prefers-reduced-motion:reduce){
-  .faq-item{opacity:1;transform:none;transition:none}
-}
-
-/* --- 8. Závěrečná CTA sekce ---------------------------------- */
-.page-cta{
-  position:relative;
-  background:#f7f5f3;
-  padding:clamp(56px,8vw,110px) 0;
-  text-align:center;
-}
-.page-cta-title{
+.legal-content{max-width:74ch}
+.legal-content h2{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:clamp(1.7rem,3.4vw,2.5rem);
+  font-size:clamp(1.2rem,1.9vw,1.5rem);
   color:var(--ink);
-  max-width:24ch;
-  margin-inline:auto;
+  letter-spacing:-.005em;
+  margin:clamp(36px,4.4vw,48px) 0 14px;
 }
-.page-cta-title em{font-style:normal;color:var(--orange)}
-.page-cta-text{
-  margin:16px auto 0;
-  max-width:52ch;
-  font-size:clamp(1rem,1.2vw,1.1rem);
-  line-height:1.65;
+.legal-content h2:first-child{margin-top:0}
+.legal-content p{
+  margin-top:12px;
+  font-size:1rem;
+  line-height:1.75;
   color:var(--ink-soft);
 }
-.page-cta-actions{
-  margin-top:clamp(28px,3.6vw,36px);
-  display:flex;flex-wrap:wrap;gap:14px;
-  justify-content:center;
+.legal-content ul{
+  margin:12px 0 0;
+  padding-left:22px;
+  color:var(--ink-soft);
+  font-size:1rem;
+  line-height:1.75;
 }
-.page-cta-actions .btn-whatsapp{width:auto}
-.page-cta-actions .btn-whatsapp .flip-face{width:auto}
-
-@media (max-width:640px){
-  .page-cta-actions{flex-direction:column;align-items:stretch}
-  .page-cta-actions a,.page-cta-actions .flip-face{width:100%;justify-content:center}
+.legal-content li{margin-top:4px}
+.legal-content strong{color:var(--ink);font-weight:600}
+.legal-content a{color:var(--orange);text-decoration:underline;text-underline-offset:2px}
+.legal-meta{
+  margin-top:clamp(36px,4.4vw,48px);
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  font-size:.85rem;
+  color:var(--ink-soft);
 }
 
-/* --- 8b. Patička ---------------------------------------------- */
+/* --- 8. Patička ------------------------------------------------ */
 .site-footer{
   background:var(--ink);
   color:rgba(255,255,255,.62);
@@ -513,18 +456,15 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
-    animation-duration:.01ms !important;
+    animation-duration:.001ms !important;
     animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
+    transition-duration:.001ms !important;
   }
 }
 </style>
 
 <noscript><style>
   .burger{display:none !important}
-  .faq-item{opacity:1;transform:none}
-  .faq-answer-wrap{grid-template-rows:1fr}
-  .faq-icon{display:none}
 </style></noscript>
 </head>
 
@@ -544,7 +484,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
       <a class="nav-link" href="index.html#realizace">Realizace</a>
       <a class="nav-link" href="cenik.html">Ceník</a>
       <a class="nav-link" href="index.html#o-nas">O nás</a>
-      <a class="nav-link" href="caste-dotazy.html" aria-current="page">Časté dotazy</a>
+      <a class="nav-link" href="caste-dotazy.html">Časté dotazy</a>
       <a class="nav-link" href="kontakt.html">Kontakt</a>
     </nav>
     <a class="header-cta cta-flip" href="tel:+420777670021">
@@ -583,135 +523,93 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   <!-- ===== Úvod stránky ===== -->
   <section class="page-head">
     <div class="container">
-      <h1 class="page-title">Časté dotazy</h1>
+      <h1 class="page-title">Ochrana osobních údajů</h1>
       <p class="page-lead">
-        Na co se nás zákazníci ptají nejčastěji, ještě než se rozhodnou pro
-        renovaci. Pokud tu odpověď na svou otázku nenajdete, klidně nám
-        rovnou napište.
+        Jak nakládáme s osobními údaji, které nám svěříte přes poptávkový
+        formulář, telefon nebo e-mail.
       </p>
     </div>
   </section>
 
-  <!-- ===== FAQ akordeon ===== -->
-  <section class="faq-list" id="faqList">
+  <!-- ===== Obsah ===== -->
+  <section class="legal">
     <div class="container">
+      <div class="legal-content">
 
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a1">
-          <span>Je lepší renovace, nebo výměna povrchu?</span>
-          <span class="faq-icon" aria-hidden="true"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer-inner">
-            <p class="faq-answer" id="faq-a1">
-              Ve většině případů se vyplatí renovace — je levnější, rychlejší
-              a zachovává hodnotu původního materiálu. Konkrétní doporučení
-              dostanete po prohlídce.
-            </p>
-          </div>
-        </div>
+        <h2>Kdo je správcem údajů</h2>
+        <p>
+          Správcem osobních údajů je <strong>Jaroslav Jedlička</strong>,
+          podnikající pod obchodní značkou Krystal, se sídlem
+          Nábřežní 414/24, Bukovice, 790 01 Jeseník, IČ: 66138566,
+          DIČ: CZ6705281748. Ve věcech ochrany osobních údajů nás můžete
+          kontaktovat na e-mailu
+          <a href="mailto:info@fa-krystal.cz">info@fa-krystal.cz</a>.
+        </p>
+
+        <h2>Jaké údaje zpracováváme</h2>
+        <p>
+          Prostřednictvím poptávkového formuláře, telefonicky, e-mailem nebo
+          přes WhatsApp od vás můžeme získat: jméno a příjmení, telefonní
+          číslo, e-mailovou adresu, obsah zprávy a případně fotografie
+          povrchu, které k poptávce přiložíte. Žádné jiné osobní údaje
+          aktivně nesbíráme a web nepoužívá žádné cookies ani analytické či
+          marketingové nástroje.
+        </p>
+
+        <h2>Proč údaje zpracováváme</h2>
+        <p>
+          Údaje zpracováváme výhradně za účelem vyřízení vaší poptávky,
+          přípravy cenové nabídky a další komunikace ohledně případné
+          realizace zakázky. Právním základem zpracování je váš souhlas
+          udělený odesláním formuláře (čl. 6 odst. 1 písm. a) GDPR), a pokud
+          dojde k uzavření zakázky, také plnění smlouvy (čl. 6 odst. 1
+          písm. b) GDPR).
+        </p>
+
+        <h2>Jak dlouho údaje uchováváme</h2>
+        <p>
+          Údaje z nerealizované poptávky uchováváme jen po dobu nezbytnou k
+          jejímu vyřízení, nejdéle 12 měsíců od posledního kontaktu. Údaje
+          související s uzavřenou zakázkou a vystavenými účetními doklady
+          uchováváme po dobu vyžadovanou zákonem (typicky 10 let z důvodu
+          daňové a účetní evidence).
+        </p>
+
+        <h2>Komu údaje předáváme</h2>
+        <p>
+          Osobní údaje nepředáváme žádným třetím stranám k marketingovým
+          účelům. Výjimkou jsou situace vyžadované zákonem (např. finanční
+          úřad u účetních dokladů) a služby, které si sami zvolíte použít —
+          pokud nás kontaktujete přes WhatsApp, zpráva prochází
+          infrastrukturou Meta Platforms, Inc. podle jejích vlastních zásad
+          ochrany soukromí. Na stránce Kontakt je vložená mapa Google Maps,
+          která se ale načte až po vašem kliknutí — do té doby se ke Google
+          nepřipojujeme.
+        </p>
+
+        <h2>Vaše práva</h2>
+        <p>Ve vztahu ke svým osobním údajům máte právo:</p>
+        <ul>
+          <li>na přístup k údajům, které o vás zpracováváme,</li>
+          <li>na opravu nepřesných nebo neúplných údajů,</li>
+          <li>na výmaz údajů („právo být zapomenut“),</li>
+          <li>na omezení zpracování,</li>
+          <li>na přenositelnost údajů,</li>
+          <li>vznést námitku proti zpracování,</li>
+          <li>kdykoli odvolat souhlas, aniž je tím dotčena zákonnost
+            zpracování založeného na souhlasu uděleném před jeho odvoláním.</li>
+        </ul>
+        <p>
+          Kterékoli z těchto práv můžete uplatnit na e-mailu
+          <a href="mailto:info@fa-krystal.cz">info@fa-krystal.cz</a>. Pokud
+          se domníváte, že vaše údaje zpracováváme v rozporu s právními
+          předpisy, máte právo podat stížnost u
+          <a href="https://www.uoou.cz" target="_blank" rel="noopener">Úřadu pro ochranu osobních údajů</a>.
+        </p>
+
       </div>
 
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a2">
-          <span>Jak dlouho renovace obvykle trvá?</span>
-          <span class="faq-icon" aria-hidden="true"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer-inner">
-            <p class="faq-answer" id="faq-a2">
-              Záleží na rozsahu a typu povrchu. U menších realizací v řádu
-              dnů — přesný termín stanovíme po prohlídce a v nabídce.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a3">
-          <span>Musíme kvůli pracím omezit provoz?</span>
-          <span class="faq-icon" aria-hidden="true"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer-inner">
-            <p class="faq-answer" id="faq-a3">
-              Bezprašná technologie často umožňuje pracovat i za částečného
-              provozu. Rozsah případného omezení probereme předem.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a4">
-          <span>Jak vypadá úklid po dokončení?</span>
-          <span class="faq-icon" aria-hidden="true"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer-inner">
-            <p class="faq-answer" id="faq-a4">
-              Prostory předáváme kompletně uklizené — žádný následný úklid
-              neřešíte.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a5">
-          <span>Do jaké oblasti dojíždíte?</span>
-          <span class="faq-icon" aria-hidden="true"><span></span><span></span></span>
-        </button>
-        <div class="faq-answer-wrap">
-          <div class="faq-answer-inner">
-            <p class="faq-answer" id="faq-a5">
-              Působíme prakticky po celé České republice. Napište nám
-              lokalitu a potvrdíme dostupnost i případný vliv na termín.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== Závěrečná CTA ===== -->
-  <section class="page-cta">
-    <div class="container">
-      <h2 class="page-cta-title">Nenašli jste <em>odpověď?</em></h2>
-      <p class="page-cta-text">
-        Napište nebo zavolejte — poradíme i s dotazy, které zde nejsou.
-      </p>
-      <div class="page-cta-actions">
-        <a class="btn cta-flip" href="kontakt.html">
-          <span class="flip-inner">
-            <span class="flip-face flip-front">
-              <span class="cta-label">Nezávazná poptávka</span>
-              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
-                <path d="M1 6h15M11.5 1 16.8 6l-5.3 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="flip-face flip-back" aria-hidden="true">
-              <span class="cta-label">Nezávazná poptávka</span>
-              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
-                <path d="M1 6h15M11.5 1 16.8 6l-5.3 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </span>
-        </a>
-        <a class="btn-whatsapp cta-flip" href="https://wa.me/420777670021?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20dotaz." target="_blank" rel="noopener">
-          <span class="flip-inner">
-            <span class="flip-face flip-front">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
-              <span class="cta-label">Napsat na WhatsApp</span>
-            </span>
-            <span class="flip-face flip-back" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
-              <span class="cta-label">Napsat na WhatsApp</span>
-            </span>
-          </span>
-        </a>
-      </div>
+      <p class="legal-meta">Poslední aktualizace: srpen 2026.</p>
     </div>
   </section>
 
@@ -781,57 +679,6 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
     </div>
   </div>
 </footer>
-
-<!-- Strukturovaná data FAQ pro Google (rich snippet) — reálný, ne
-     smyšlený obsah, proto je schema na místě (na rozdíl od recenzí). -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Je lepší renovace, nebo výměna povrchu?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ve většině případů se vyplatí renovace — je levnější, rychlejší a zachovává hodnotu původního materiálu. Konkrétní doporučení dostanete po prohlídce."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Jak dlouho renovace obvykle trvá?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Záleží na rozsahu a typu povrchu. U menších realizací v řádu dnů — přesný termín stanovíme po prohlídce a v nabídce."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Musíme kvůli pracím omezit provoz?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Bezprašná technologie často umožňuje pracovat i za částečného provozu. Rozsah případného omezení probereme předem."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Jak vypadá úklid po dokončení?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Prostory předáváme kompletně uklizené — žádný následný úklid neřešíte."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do jaké oblasti dojíždíte?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Působíme prakticky po celé České republice. Napište nám lokalitu a potvrdíme dostupnost i případný vliv na termín."
-      }
-    }
-  ]
-}
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script>
@@ -963,31 +810,6 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
       });
     });
   }
-
-  /* --- 5. FAQ akordeon — nástup + rozbalování ---------------------------- */
-  (function faq(){
-    var list = document.querySelector(".faq-list");
-    if(!list) return;
-
-    if("IntersectionObserver" in window){
-      var io = new IntersectionObserver(function(entries, obs){
-        entries.forEach(function(en){
-          if(en.isIntersecting){ list.classList.add("is-visible"); obs.unobserve(en.target); }
-        });
-      }, {threshold:.1});
-      io.observe(list);
-    } else {
-      list.classList.add("is-visible");
-    }
-
-    list.querySelectorAll(".faq-item").forEach(function(item){
-      var btn = item.querySelector(".faq-question");
-      btn.addEventListener("click", function(){
-        var isOpen = item.classList.toggle("is-open");
-        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-    });
-  })();
 })();
 </script>
 </body>
