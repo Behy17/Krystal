@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Krystal">
+  <rect width="100" height="100" rx="18" fill="#ee7c21"/>
+  <rect x="16" y="20" width="19" height="60" fill="#fff"/>
+  <path d="M84 20H58L37 50l21 30h26L63 50z" fill="#fff"/>
+</svg>

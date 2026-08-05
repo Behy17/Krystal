@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Služby — Krystal | podlahářství, renovace kamene a betonu</title>
+<meta name="description" content="Kompletní přehled služeb Krystal: renovace kamene, teraca a mramoru, ošetření pohledového betonu, podlahářské práce, epoxidové podlahy, renovace dřevěných i sportovních podlah.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Saira:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   KRYSTAL — stránka Služby
+   Sdílené bloky (tokeny, reset, hlavička, menu, CTA flip systém)
+   jsou záměrně zkopírované z index.html, ne odkazované jako
+   externí soubor — celý web je dosud stavěný jako samostatné
+   HTML soubory bez buildu, tahle stránka drží stejný vzor.
+   Při úpravě hlavičky/tlačítek na jedné stránce nezapomeňte
+   zrcadlit změnu i na druhé.
+   ============================================================ */
+
+/* --- 1. Design tokeny ------------------------------------- */
+:root{
+  --orange:#ee7c21;
+  --orange-dark:#d76812;
+  --ink:#2b2b2b;
+  --ink-soft:#5b5b5f;
+  --line:#e6e6e8;
+  --white:#fff;
+
+  --header-h:100px;
+  --header-h-sm:72px;
+
+  --gap:clamp(20px, 5vw, 64px);
+  --container:1560px;
+
+  --font-display:"Michroma", "Saira", "Segoe UI", sans-serif;
+  --font-ui:"Saira", "Segoe UI", system-ui, sans-serif;
+
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+}
+
+/* --- 2. Reset --------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font-ui);
+  font-weight:300;
+  font-size:18px;
+  line-height:1.55;
+  color:var(--ink);
+  background:#fff;
+  overflow-x:hidden;
+}
+body.is-locked{overflow:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gap);
+}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--ink);color:#fff;padding:12px 20px;
+}
+.skip-link:focus{left:0}
+
+:where(a,button):focus-visible{
+  outline:2px solid var(--orange);
+  outline-offset:4px;
+  border-radius:4px;
+}
+
+/* --- 3. Hlavička ------------------------------------------ */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  height:var(--header-h);
+  background:var(--white);
+  transition:height .45s var(--ease-out), box-shadow .45s var(--ease-out);
+  box-shadow:0 1px 0 var(--line);
+}
+.site-header.is-scrolled{
+  height:var(--header-h-sm);
+  box-shadow:0 1px 0 var(--line), 0 10px 30px -20px rgba(0,0,0,.35);
+}
+
+.header-inner{
+  display:flex; align-items:center; gap:clamp(16px,3vw,48px);
+  height:100%;
+}
+
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand img,.brand svg{
+  height:clamp(30px,3.4vw,44px); width:auto;
+  transition:height .45s var(--ease-out);
+}
+.site-header.is-scrolled .brand img,
+.site-header.is-scrolled .brand svg{height:clamp(26px,2.6vw,34px)}
+
+.nav{margin-left:auto;display:flex;align-items:center;gap:clamp(18px,2.2vw,38px)}
+.nav-link{
+  position:relative;
+  font-size:16px; font-weight:400; letter-spacing:.01em;
+  color:var(--ink);
+  padding:6px 0;
+  transition:color .3s var(--ease-out);
+}
+.nav-link::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:2px;
+  background:var(--orange);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .45s var(--ease-out);
+}
+.nav-link:hover{color:var(--orange)}
+.nav-link:hover::after{transform:scaleX(1)}
+.nav-link[aria-current="page"]{color:var(--orange)}
+.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+
+.header-cta{
+  position:relative;
+  display:inline-flex;align-items:center;
+  font-size:15px;font-weight:500;letter-spacing:.02em;
+  border-radius:999px;
+}
+
+.burger{
+  display:none; margin-left:auto;
+  width:48px;height:48px;
+  align-items:center;justify-content:center;
+}
+.burger span{
+  position:relative;display:block;width:26px;height:2px;background:var(--ink);
+  transition:background .2s linear;
+}
+.burger span::before,.burger span::after{
+  content:"";position:absolute;left:0;width:26px;height:2px;background:var(--ink);
+  transition:transform .45s var(--ease-out), top .25s var(--ease-out);
+}
+.burger span::before{top:-8px}
+.burger span::after{top:8px}
+body.is-menu-open .burger span{background:transparent}
+body.is-menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.is-menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+
+/* --- 4. Vysouvací menu (mobil / tablet) -------------------- */
+.menu{
+  position:fixed;inset:0;z-index:99;
+  background:var(--white);
+  padding:calc(var(--header-h) + 28px) var(--gap) 40px;
+  display:flex;flex-direction:column;justify-content:center;
+  transform:translate3d(100%,0,0);
+  transition:transform .6s var(--ease-io);
+  visibility:hidden;
+}
+body.is-menu-open .menu{transform:translate3d(0,0,0);visibility:visible}
+
+.menu-list{display:flex;flex-direction:column;gap:clamp(4px,1.4vh,14px)}
+.menu-list a{
+  font-family:var(--font-display);
+  font-size:clamp(1.35rem,6vw,2.6rem);
+  line-height:1.25;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),color .3s;
+}
+.menu-list a:hover{color:var(--orange)}
+body.is-menu-open .menu-list a{opacity:1;transform:none}
+body.is-menu-open .menu-list a:nth-child(1){transition-delay:.14s}
+body.is-menu-open .menu-list a:nth-child(2){transition-delay:.20s}
+body.is-menu-open .menu-list a:nth-child(3){transition-delay:.26s}
+body.is-menu-open .menu-list a:nth-child(4){transition-delay:.32s}
+body.is-menu-open .menu-list a:nth-child(5){transition-delay:.38s}
+body.is-menu-open .menu-list a:nth-child(6){transition-delay:.44s}
+body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
+.menu-foot{
+  margin-top:auto;padding-top:32px;border-top:1px solid var(--line);
+  font-size:15px;color:var(--ink-soft);
+  display:flex;flex-wrap:wrap;gap:8px 28px;
+}
+.menu-foot a:hover{color:var(--orange)}
+
+/* --- 5. Prémiová 3D flip animace CTA tlačítek (GSAP) ------- */
+.header-cta,.btn,.btn-ghost,.btn-outline,.btn-whatsapp{
+  position:relative;
+  isolation:isolate;
+  cursor:pointer;
+  will-change:transform;
+}
+.cta-flip{perspective:900px}
+.flip-inner{
+  position:relative;
+  display:block;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.flip-face{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:inherit;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.flip-back{
+  position:absolute;inset:0;
+  transform:rotateX(180deg);
+}
+
+.btn{
+  border-radius:0;
+  font-weight:500;font-size:clamp(15px,1.15vw,17px);letter-spacing:.015em;
+}
+.btn .flip-face{gap:12px;padding:15px 32px;border-radius:0}
+.btn .flip-front{background:var(--orange);color:#fff}
+.btn .flip-back{background:#fff;color:var(--ink)}
+.btn svg{transition:transform .45s var(--ease-out)}
+.btn:hover svg{transform:translateX(5px)}
+
+.header-cta .flip-face{padding:11px 22px;border-radius:999px}
+.header-cta .flip-front{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.header-cta .flip-back{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+
+.btn-outline{
+  display:inline-flex;align-items:center;
+  border-radius:999px;
+  font-weight:500;font-size:clamp(15px,1.15vw,17px);
+}
+.btn-outline .flip-face{padding:17px 30px;border-radius:999px;text-align:left}
+.btn-outline .flip-front{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.btn-outline .flip-back{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+
+.btn-whatsapp{
+  display:flex;width:100%;
+  border-radius:999px;
+  font-weight:500;font-size:clamp(15px,1.1vw,16px);
+}
+.btn-whatsapp .flip-face{padding:16px 20px;gap:11px;justify-content:center;width:100%}
+.btn-whatsapp .flip-front{background:#25d366;color:#fff}
+.btn-whatsapp .flip-back{background:#128c4a;color:#fff}
+.btn-whatsapp svg{flex:0 0 auto;display:block}
+
+/* --- 6. Úvod stránky (page header) -------------------------- */
+.page-head{
+  position:relative;
+  background:var(--ink);
+  padding:clamp(64px,9vw,110px) 0 clamp(56px,7vw,84px);
+}
+.page-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-display);
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:16px;
+}
+.page-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(2.2rem,5.4vw,4rem);
+  line-height:1.08;
+  letter-spacing:-.005em;
+  color:#fff;
+  max-width:16ch;
+}
+.page-lead{
+  margin-top:18px;
+  max-width:62ch;
+  font-size:clamp(1rem,1.4vw,1.2rem);
+  line-height:1.7;
+  color:rgba(255,255,255,.66);
+}
+
+/* --- 7. Seznam služeb --------------------------------------- */
+.service-list{
+  background:#fff;
+}
+.service-block{
+  padding:clamp(40px,6vw,68px) 0;
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:clamp(20px,3vw,40px);
+  scroll-margin-top:calc(var(--header-h) + 16px);
+  opacity:0;transform:translateY(22px);
+  transition:opacity .8s var(--ease-out), transform .8s var(--ease-out);
+}
+.service-list.is-visible .service-block{opacity:1;transform:none}
+
+.service-block-icon{
+  flex:0 0 auto;
+  width:clamp(52px,5vw,64px);height:clamp(52px,5vw,64px);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(238,124,33,.1);
+  color:var(--orange);
+}
+.service-block-icon svg{display:block;width:60%;height:60%}
+
+.service-block-num{
+  display:block;
+  font-family:var(--font-display);
+  font-size:.8rem;letter-spacing:.1em;
+  color:var(--ink-soft);
+  margin-bottom:10px;
+}
+.service-block h2{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.4rem,2.6vw,2rem);
+  line-height:1.2;
+  color:var(--ink);
+  letter-spacing:-.005em;
+  max-width:26ch;
+}
+.service-block p{
+  margin-top:14px;
+  max-width:68ch;
+  font-size:clamp(1rem,1.2vw,1.08rem);
+  line-height:1.7;
+  color:var(--ink-soft);
+}
+.service-block-tags{
+  margin-top:16px;
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.service-block-tags span{
+  font-size:.82rem;
+  color:var(--ink);
+  background:rgba(43,43,43,.05);
+  border-radius:999px;
+  padding:6px 13px;
+}
+
+@media (max-width:640px){
+  .service-block{grid-template-columns:1fr}
+  .service-block-icon{margin-bottom:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  .service-block{opacity:1;transform:none;transition:none}
+}
+
+/* --- 8. Závěrečná CTA sekce ---------------------------------- */
+.page-cta{
+  position:relative;
+  background:#f7f5f3;
+  padding:clamp(56px,8vw,110px) 0;
+  text-align:center;
+}
+.page-cta-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.7rem,3.4vw,2.5rem);
+  color:var(--ink);
+  max-width:22ch;
+  margin-inline:auto;
+}
+.page-cta-title em{font-style:normal;color:var(--orange)}
+.page-cta-text{
+  margin:16px auto 0;
+  max-width:52ch;
+  font-size:clamp(1rem,1.2vw,1.1rem);
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.page-cta-actions{
+  margin-top:clamp(28px,3.6vw,36px);
+  display:flex;flex-wrap:wrap;gap:14px;
+  justify-content:center;
+}
+.page-cta-actions .btn-whatsapp{width:auto}
+.page-cta-actions .btn-whatsapp .flip-face{width:auto}
+
+@media (max-width:640px){
+  .page-cta-actions{flex-direction:column;align-items:stretch}
+  .page-cta-actions a,.page-cta-actions .flip-face{width:100%;justify-content:center}
+}
+
+/* --- 9. Responzivita a přístupnost --------------------------- */
+@media (max-width:1200px){
+  .nav,.header-cta{display:none}
+  .burger{display:flex}
+}
+@media (max-width:640px){
+  :root{--header-h:72px;--header-h-sm:64px}
+  body{font-size:17px}
+  .btn,.btn-outline{width:100%;justify-content:center}
+  .flip-face{display:flex;width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+
+<noscript><style>
+  .burger{display:none !important}
+  .service-block{opacity:1;transform:none}
+</style></noscript>
+</head>
+
+<body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+
+<!-- ===== Hlavička ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Krystal — domů">
+      <img id="brandLogo" src="logo_transparent.png" alt="Krystal" width="1564" height="308" decoding="async">
+    </a>
+
+    <nav class="nav" aria-label="Hlavní navigace">
+      <a class="nav-link" href="index.html#uvod">Úvod</a>
+      <a class="nav-link" href="sluzby.html" aria-current="page">Služby</a>
+      <a class="nav-link" href="index.html#realizace">Realizace</a>
+      <a class="nav-link" href="cenik.html">Ceník</a>
+      <a class="nav-link" href="index.html#o-nas">O nás</a>
+      <a class="nav-link" href="caste-dotazy.html">Časté dotazy</a>
+      <a class="nav-link" href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="header-cta cta-flip" href="index.html#kontakt">
+      <span class="flip-inner">
+        <span class="flip-face flip-front"><span class="cta-label">Nezávazná poptávka</span></span>
+        <span class="flip-face flip-back" aria-hidden="true"><span class="cta-label">Nezávazná poptávka</span></span>
+      </span>
+    </a>
+
+    <button class="burger" id="burger" type="button"
+            aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Vysouvací menu ===== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-list" aria-label="Mobilní navigace">
+    <a href="index.html#uvod">Úvod /</a>
+    <a href="sluzby.html">Služby /</a>
+    <a href="index.html#realizace">Realizace /</a>
+    <a href="cenik.html">Ceník /</a>
+    <a href="index.html#o-nas">O nás /</a>
+    <a href="caste-dotazy.html">Časté dotazy /</a>
+    <a href="index.html#kontakt">Kontakt /</a>
+  </nav>
+  <div class="menu-foot">
+    <a href="tel:+420777670021">+420 777 670 021</a>
+    <a href="mailto:info@krystal.cz">info@krystal.cz</a>
+  </div>
+</div>
+
+<main id="obsah">
+
+  <!-- ===== Úvod stránky ===== -->
+  <section class="page-head">
+    <div class="container">
+      <span class="page-eyebrow">Osm specializací</span>
+      <h1 class="page-title">Služby</h1>
+      <p class="page-lead">
+        Renovace místo bourání — přírodní i umělý kámen, teraso, mramor,
+        pohledový beton, podlahářské práce, epoxidové stěrky i dřevěné
+        a sportovní podlahy. Vyberte si obor níže, nebo nám rovnou
+        popište, s čím si nevíte rady.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Seznam služeb ===== -->
+  <section class="service-list">
+    <div class="container">
+
+      <article class="service-block" id="kamen">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M2.5 18.5 8 10l3 4 2.5-3.4L20.5 18.5H2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <span class="service-block-num">01 / 08</span>
+          <h2>Renovace přírodního a umělého kamene</h2>
+          <p>
+            Žula, mramor, pískovec i umělý kámen po letech provozu ztrácejí
+            rovinatost, lesk a barvu. Povrch přebrousíme do roviny, vytmelíme
+            praskliny a spáry a vícevrstvým leštěním vrátíme kameni jeho
+            původní hloubku a lesk — bez bourání a pokládky nového materiálu.
+          </p>
+          <div class="service-block-tags">
+            <span>Schody</span><span>Římsy</span><span>Podlahy</span><span>Sokly</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="teraso">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8" cy="8" r="1" fill="currentColor"/>
+            <circle cx="14.2" cy="7" r="1.3" fill="currentColor"/>
+            <circle cx="17" cy="12.5" r="1" fill="currentColor"/>
+            <circle cx="7" cy="14" r="1.2" fill="currentColor"/>
+            <circle cx="12" cy="16.5" r="1" fill="currentColor"/>
+            <circle cx="16.5" cy="17" r="1.3" fill="currentColor"/>
+          </svg>
+        </span>
+        <div>
+          <span class="service-block-num">02 / 08</span>
+          <h2>Renovace teraca</h2>
+          <p>
+            Terazzo bylo standardem výstavby po desetiletí a ve správných
+            rukou vydrží další desítky let. Obnovíme rovinatost, uzavřeme
+            póry v povrchu a vyleštíme terasovou dlažbu do zrcadlového
+            lesku — v bytových i komerčních objektech.
+          </p>
+          <div class="service-block-tags">
+            <span>Schody</span><span>Římsy</span><span>Podlahy</span><span>Sokly</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="mramor">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c.6 4 2 6.4 6 7-4 .6-5.4 3-6 7-.6-4-2-6.4-6-7 4-.6 5.4-3 6-7Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <span class="service-block-num">03 / 08</span>
+          <h2>Broušení a leštění mramorových dlažeb, obkladů a schodů</h2>
+          <p>
+            Mramor časem matní, škrábe se a ztrácí rovinatost. Postupným
+            broušením diamantovými kotouči a vícestupňovým leštěním
+            odstraníme poškození a obnovíme přirozený lesk a kresbu kamene
+            — u dlažeb, obkladů i celých schodišť.
+          </p>
+          <div class="service-block-tags">
+            <span>Dlažby</span><span>Obklady</span><span>Schody</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="beton">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M3 9.5h18M3 14.5h18M9 4v5.5M15 9.5v5M9 14.5V20" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <div>
+          <span class="service-block-num">04 / 08</span>
+          <h2>Ošetření a renovace pohledového betonu</h2>
+          <p>
+            Pohledový beton potřebuje po realizaci i v průběhu let ochranu
+            proti prachu, mastnotě a povětrnostním vlivům. Provedeme
+            broušení, tmelení a impregnaci nebo hydrofobizaci povrchu tak,
+            aby si beton dlouhodobě udržel barvu i strukturu.
+          </p>
+          <div class="service-block-tags">
+            <span>Interiér</span><span>Exteriér</span><span>Fasády</span><span>Schody</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="podlahy">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="2.5" y="9.5" width="19" height="5" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="1.8" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+        </span>
+        <div>
+          <span class="service-block-num">05 / 08</span>
+          <h2>Podlahářské práce</h2>
+          <p>
+            Postaráme se o podlahu od základu: změříme vlhkost podkladu,
+            provedeme nivelaci a vyrovnání, brousíme, čistíme a
+            impregnujeme. Pokládáme všechny běžné typy podlahových krytin
+            a poradíme, jaké řešení se pro váš provoz skutečně vyplatí.
+          </p>
+          <div class="service-block-tags">
+            <span>Nivelace</span><span>Broušení</span><span>Pokládka</span>
+            <span>Měření vlhkosti</span><span>Čištění</span><span>Impregnace</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="epoxid">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3s6 7 6 11.5A6 6 0 1 1 6 14.5C6 10 12 3 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <span class="service-block-num">06 / 08</span>
+          <h2>Epoxidové a polyuretanové podlahy</h2>
+          <p>
+            Epoxidové a polyuretanové stěrky vytvoří bezespárý, chemicky
+            i mechanicky odolný povrch přesně podle nároků provozu — od
+            lehkého komerčního zatížení až po průmyslové haly. Součástí je
+            příprava podkladu, penetrace i finální povrchová úprava podle
+            požadované protiskluznosti.
+          </p>
+          <div class="service-block-tags">
+            <span>Průmyslové haly</span><span>Sklady</span><span>Komerční provozy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="drevo">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="2.5" y="6" width="19" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 9c1.5 1 1.5 2 0 3M12 8.5c1.8 1.2 1.8 2.6 0 4M18 9c1.5 1 1.5 2 0 3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div>
+          <span class="service-block-num">07 / 08</span>
+          <h2>Renovace dřevěných podlah a parket</h2>
+          <p>
+            Dřevěná podlaha snese několik renovací za svou životnost.
+            Přebrousíme povrch, opravíme lokální poškození a dokončíme
+            lakováním, olejováním nebo kartáčováním podle požadovaného
+            vzhledu a provozní zátěže — od bytů po historické parkety.
+          </p>
+          <div class="service-block-tags">
+            <span>Broušení</span><span>Lokální opravy</span><span>Lakování</span>
+            <span>Olejování</span><span>Kartáčování</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-block" id="sportovni">
+        <span class="service-block-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M12 4.5v15" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <div>
+          <span class="service-block-num">08 / 08</span>
+          <h2>Renovace sportovních dřevěných podlah v tělocvičnách</h2>
+          <p>
+            Sportovní dřevěné podlahy vyžadují specifický systém broušení
+            a lakování odolávající vysokému zatížení a bodovým nárazům.
+            Součástí renovace je i přesné vylajnování hracích ploch podle
+            sportovních norem a výroba a nanesení klubového loga přímo
+            na palubovku.
+          </p>
+          <div class="service-block-tags">
+            <span>Broušení a lakování</span><span>Lajnování</span><span>Výroba log</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== Závěrečná CTA ===== -->
+  <section class="page-cta">
+    <div class="container">
+      <h2 class="page-cta-title">Nevíte, která služba <em>je ta pravá?</em></h2>
+      <p class="page-cta-text">
+        Stačí pár fotek povrchu — do 24 hodin se ozveme s odhadem, co se
+        vyplatí, a jestli jde vůbec o renovaci, nebo je opravdu potřeba
+        výměna.
+      </p>
+      <div class="page-cta-actions">
+        <a class="btn cta-flip" href="index.html#kontakt">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <span class="cta-label">Nezávazná poptávka</span>
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 6h15M11.5 1 16.8 6l-5.3 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="flip-face flip-back" aria-hidden="true">
+              <span class="cta-label">Nezávazná poptávka</span>
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 6h15M11.5 1 16.8 6l-5.3 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </span>
+        </a>
+        <a class="btn-whatsapp cta-flip" href="https://wa.me/420777670021?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20nez%C3%A1vaznou%20konzultaci." target="_blank" rel="noopener">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              <span class="cta-label">Napsat na WhatsApp</span>
+            </span>
+            <span class="flip-face flip-back" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              <span class="cta-label">Napsat na WhatsApp</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- 1. Logo: zkusí několik názvů, jinak vykreslí vektorovou náhradu --- */
+  (function logo(){
+    var img = document.getElementById("brandLogo");
+    if(!img) return;
+    var candidates = ["logo_transparent.png","logo.svg","logo.png","krystal-logo.svg","krystal-logo.png"];
+    var i = candidates.indexOf(img.getAttribute("src"));
+    i = i < 0 ? 0 : i;
+
+    img.addEventListener("error", function(){
+      i++;
+      if(i < candidates.length){ img.src = candidates[i]; return; }
+      var svg =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508 100" role="img" aria-label="Krystal">' +
+          '<rect width="100" height="100" fill="#ee7c21"/>' +
+          '<rect x="16" y="20" width="19" height="60" fill="#fff"/>' +
+          '<path d="M84 20H58L37 50l21 30h26L63 50z" fill="#fff"/>' +
+          '<text x="118" y="76" font-family="Michroma, Saira, sans-serif" font-size="62" ' +
+                'letter-spacing="2" fill="#2b2b2b">RYSTAL</text>' +
+        '</svg>';
+      var wrap = document.createElement("span");
+      wrap.innerHTML = svg;
+      var node = wrap.firstChild;
+      node.style.height = getComputedStyle(img).height;
+      img.replaceWith(node);
+    });
+  })();
+
+  /* --- 2. Scroll: zmenšení hlavičky (bez hero, žádný parallax) ----------- */
+  var header = document.getElementById("siteHeader");
+  var ticking = false;
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    header.classList.toggle("is-scrolled", y > 10);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+
+  /* --- 3. Menu ------------------------------------------------------------ */
+  var burger = document.getElementById("burger");
+  var menu   = document.getElementById("menu");
+
+  function setMenu(open){
+    document.body.classList.toggle("is-menu-open", open);
+    document.body.classList.toggle("is-locked", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+    menu.setAttribute("aria-hidden", open ? "false" : "true");
+  }
+  burger.addEventListener("click", function(){
+    setMenu(!document.body.classList.contains("is-menu-open"));
+  });
+  menu.addEventListener("click", function(e){
+    if(e.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && document.body.classList.contains("is-menu-open")) setMenu(false);
+  });
+  window.matchMedia("(min-width:1201px)").addEventListener("change", function(e){
+    if(e.matches) setMenu(false);
+  });
+
+  /* --- 4. Prémiová 3D flip animace CTA tlačítek (GSAP) ------------------- */
+  if(window.gsap && !reduce){
+    var _warn = console.warn.bind(console);
+    console.warn = function(msg){
+      if(typeof msg === "string" && msg.indexOf("not eligible for reset") > -1) return;
+      _warn.apply(console, arguments);
+    };
+
+    var fineHover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+    var ctas = document.querySelectorAll(".cta-flip");
+
+    ctas.forEach(function(el){
+      var inner = el.querySelector(".flip-inner");
+      if(!inner) return;
+
+      gsap.set(el,    {transformOrigin:"50% 50%", scaleX:1, scaleY:1});
+      gsap.set(inner, {transformStyle:"preserve-3d", rotateX:0});
+
+      function setScale(v){
+        gsap.to(el, {scaleX:v, scaleY:v, duration:.4, ease:"power3", overwrite:"auto"});
+      }
+      function flipTo(state){
+        gsap.to(inner, {
+          rotateX: state ? 180 : 0,
+          duration: state ? .6 : .5,
+          ease: state ? "back.out(1.5)" : "power2.inOut",
+          overwrite:"auto"
+        });
+      }
+
+      if(fineHover){
+        el.addEventListener("pointerenter", function(e){
+          if(e.pointerType === "touch") return;
+          setScale(1.05); flipTo(true);
+        });
+        el.addEventListener("pointerleave", function(e){
+          if(e.pointerType === "touch") return;
+          setScale(1); flipTo(false);
+        });
+        el.addEventListener("focus", function(){
+          if(el.matches(":focus-visible")){ setScale(1.05); flipTo(true); }
+        });
+        el.addEventListener("blur", function(){ setScale(1); flipTo(false); });
+      }
+
+      el.addEventListener("pointerdown", function(e){
+        setScale(.95);
+        if(e.pointerType === "touch") flipTo(true);
+      });
+      el.addEventListener("pointerup", function(e){
+        var isTouch = e.pointerType === "touch";
+        setScale(fineHover && !isTouch ? 1.05 : 1);
+        if(isTouch) setTimeout(function(){ flipTo(false); }, 260);
+      });
+      el.addEventListener("pointercancel", function(){
+        setScale(1); flipTo(false);
+      });
+    });
+  }
+
+  /* --- 5. Seznam služeb — postupný nástup bloků při scrollu -------------- */
+  (function serviceListReveal(){
+    var list = document.querySelector(".service-list");
+    if(!list) return;
+    if("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ list.classList.add("is-visible"); obs.unobserve(en.target); }
+        });
+      }, {threshold:.1});
+      io.observe(list);
+    } else {
+      list.classList.add("is-visible");
+    }
+  })();
+})();
+</script>
+</body>
+</html>
