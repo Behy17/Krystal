@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Realizace — Krystal | podlahářství, renovace kamene a betonu</title>
+<meta name="description" content="Výběr z realizací Krystal — renovace mramorových, teracových a betonových povrchů pro hotely, nemocnice, úřady i školy po celé České republice.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://www.stone-krystal.cz/realizace.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Krystal">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Realizace — Krystal | podlahářství, renovace kamene a betonu">
+<meta property="og:description" content="Výběr z realizací Krystal — renovace mramorových, teracových a betonových povrchů pro hotely, nemocnice, úřady i školy po celé České republice.">
+<meta property="og:url" content="https://www.stone-krystal.cz/realizace.html">
+<meta property="og:image" content="https://www.stone-krystal.cz/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Realizace — Krystal | podlahářství, renovace kamene a betonu">
+<meta name="twitter:description" content="Výběr z realizací Krystal — renovace mramorových, teracových a betonových povrchů pro hotely, nemocnice, úřady i školy po celé České republice.">
+<meta name="twitter:image" content="https://www.stone-krystal.cz/og-image.jpg">
+
+<style>
+/* ============================================================
+   KRYSTAL — stránka Realizace
+   Sdílené bloky (tokeny, reset, hlavička, menu, CTA flip systém)
+   jsou zkopírované z kontakt.html — stejný vzor samostatných
+   HTML souborů bez buildu jako zbytek webu.
+   ============================================================ */
+
+/* --- 1. Design tokeny ------------------------------------- */
+:root{
+  --orange:#ee7c21;
+  --orange-dark:#d76812;
+  --ink:#2b2b2b;
+  --ink-soft:#5b5b5f;
+  --line:#e6e6e8;
+  --white:#fff;
+
+  --header-h:100px;
+  --header-h-sm:72px;
+
+  --gap:clamp(20px, 5vw, 64px);
+  --container:1560px;
+
+  --font-display:"Michroma", "Saira", "Segoe UI", sans-serif;
+  --font-ui:"Saira", "Segoe UI", system-ui, sans-serif;
+
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+}
+
+/* --- 1b. Lokální fonty (self-hosted, bez GDPR rizika Google Fonts CDN) --- */
+@font-face{
+  font-family:'Michroma';font-style:normal;font-weight:400;font-display:swap;
+  src:url("fonts/michroma-400-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Michroma';font-style:normal;font-weight:400;font-display:swap;
+  src:url("fonts/michroma-400-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:300;font-display:swap;
+  src:url("fonts/saira-300-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:300;font-display:swap;
+  src:url("fonts/saira-300-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:400;font-display:swap;
+  src:url("fonts/saira-400-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:400;font-display:swap;
+  src:url("fonts/saira-400-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:500;font-display:swap;
+  src:url("fonts/saira-500-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:500;font-display:swap;
+  src:url("fonts/saira-500-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:600;font-display:swap;
+  src:url("fonts/saira-600-latin-ext.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Saira';font-style:normal;font-weight:600;font-display:swap;
+  src:url("fonts/saira-600-latin.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* --- 2. Reset --------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font-ui);
+  font-weight:300;
+  font-size:18px;
+  line-height:1.55;
+  color:var(--ink);
+  background:#fff;
+  overflow-x:hidden;
+}
+body.is-locked{overflow:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gap);
+}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--ink);color:#fff;padding:12px 20px;
+}
+.skip-link:focus{left:0}
+
+:where(a,button):focus-visible{
+  outline:2px solid var(--orange);
+  outline-offset:4px;
+  border-radius:4px;
+}
+
+/* --- 3. Hlavička ------------------------------------------ */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  height:var(--header-h);
+  background:var(--white);
+  transition:height .45s var(--ease-out), box-shadow .45s var(--ease-out);
+  box-shadow:0 1px 0 var(--line);
+}
+.site-header.is-scrolled{
+  height:var(--header-h-sm);
+  box-shadow:0 1px 0 var(--line), 0 10px 30px -20px rgba(0,0,0,.35);
+}
+
+.header-inner{
+  display:flex; align-items:center; gap:clamp(16px,3vw,48px);
+  height:100%;
+}
+
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand img,.brand svg{
+  height:clamp(30px,3.4vw,44px); width:auto;
+  transition:height .45s var(--ease-out);
+}
+.site-header.is-scrolled .brand img,
+.site-header.is-scrolled .brand svg{height:clamp(26px,2.6vw,34px)}
+
+.nav{margin-left:auto;display:flex;align-items:center;gap:clamp(18px,2.2vw,38px)}
+.nav-link{
+  position:relative;
+  font-size:16px; font-weight:400; letter-spacing:.01em;
+  color:var(--ink);
+  padding:6px 0;
+  transition:color .3s var(--ease-out);
+}
+.nav-link::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:2px;
+  background:var(--orange);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .45s var(--ease-out);
+}
+.nav-link:hover{color:var(--orange)}
+.nav-link:hover::after{transform:scaleX(1)}
+.nav-link[aria-current="page"]{color:var(--orange)}
+.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+
+.header-cta{
+  position:relative;
+  display:inline-flex;align-items:center;
+  font-size:15px;font-weight:500;letter-spacing:.02em;
+  border-radius:999px;
+}
+
+.burger{
+  display:none; margin-left:auto;
+  width:48px;height:48px;
+  align-items:center;justify-content:center;
+}
+.burger span{
+  position:relative;display:block;width:26px;height:2px;background:var(--ink);
+  transition:background .2s linear;
+}
+.burger span::before,.burger span::after{
+  content:"";position:absolute;left:0;width:26px;height:2px;background:var(--ink);
+  transition:transform .45s var(--ease-out), top .25s var(--ease-out);
+}
+.burger span::before{top:-8px}
+.burger span::after{top:8px}
+body.is-menu-open .burger span{background:transparent}
+body.is-menu-open .burger span::before{top:0;transform:rotate(45deg)}
+body.is-menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+
+/* --- 4. Vysouvací menu (mobil / tablet) -------------------- */
+.menu{
+  position:fixed;inset:0;z-index:99;
+  background:var(--white);
+  padding:calc(var(--header-h) + 28px) var(--gap) 40px;
+  display:flex;flex-direction:column;justify-content:center;
+  transform:translate3d(100%,0,0);
+  transition:transform .6s var(--ease-io);
+  visibility:hidden;
+}
+body.is-menu-open .menu{transform:translate3d(0,0,0);visibility:visible}
+
+.menu-list{display:flex;flex-direction:column;gap:clamp(4px,1.4vh,14px)}
+.menu-list a{
+  font-family:var(--font-display);
+  font-size:clamp(1.35rem,6vw,2.6rem);
+  line-height:1.25;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),color .3s;
+}
+.menu-list a:hover{color:var(--orange)}
+body.is-menu-open .menu-list a{opacity:1;transform:none}
+body.is-menu-open .menu-list a:nth-child(1){transition-delay:.14s}
+body.is-menu-open .menu-list a:nth-child(2){transition-delay:.20s}
+body.is-menu-open .menu-list a:nth-child(3){transition-delay:.26s}
+body.is-menu-open .menu-list a:nth-child(4){transition-delay:.32s}
+body.is-menu-open .menu-list a:nth-child(5){transition-delay:.38s}
+body.is-menu-open .menu-list a:nth-child(6){transition-delay:.44s}
+body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
+.menu-foot{
+  margin-top:auto;padding-top:32px;border-top:1px solid var(--line);
+  font-size:15px;color:var(--ink-soft);
+  display:flex;flex-wrap:wrap;gap:8px 28px;
+}
+.menu-foot a:hover{color:var(--orange)}
+
+/* --- 5. Prémiová 3D flip animace CTA tlačítek (GSAP) ------- */
+.header-cta,.btn,.btn-ghost,.btn-outline,.btn-whatsapp{
+  position:relative;
+  isolation:isolate;
+  cursor:pointer;
+  will-change:transform;
+}
+.cta-flip{perspective:900px}
+.flip-inner{
+  position:relative;
+  display:block;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.flip-face{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:inherit;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.flip-back{
+  position:absolute;inset:0;
+  transform:rotateX(180deg);
+}
+
+.btn{
+  border-radius:0;
+  font-weight:500;font-size:clamp(15px,1.15vw,17px);letter-spacing:.015em;
+}
+.btn .flip-face{gap:12px;padding:15px 32px;border-radius:0}
+.btn .flip-front{background:var(--orange);color:#fff}
+.btn .flip-back{background:#fff;color:var(--ink)}
+.btn svg{transition:transform .45s var(--ease-out)}
+.btn:hover svg{transform:translateX(5px)}
+
+.header-cta .flip-face{padding:11px 22px;border-radius:999px}
+.header-cta .flip-front{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.header-cta .flip-back{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+
+.btn-whatsapp{
+  display:flex;width:100%;
+  border-radius:999px;
+  font-weight:500;font-size:clamp(15px,1.1vw,16px);
+}
+.btn-whatsapp .flip-face{padding:16px 20px;gap:11px;justify-content:center;width:100%}
+.btn-whatsapp .flip-front{background:#25d366;color:#fff}
+.btn-whatsapp .flip-back{background:#128c4a;color:#fff}
+.btn-whatsapp svg{flex:0 0 auto;display:block}
+
+/* --- 6. Úvod stránky (page header) -------------------------- */
+.page-head{
+  position:relative;
+  background:var(--ink);
+  padding:clamp(64px,9vw,110px) 0 clamp(56px,7vw,84px);
+}
+.page-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(2.2rem,5.4vw,4rem);
+  line-height:1.08;
+  letter-spacing:-.005em;
+  color:#fff;
+  max-width:16ch;
+}
+.page-lead{
+  margin-top:18px;
+  max-width:62ch;
+  font-size:clamp(1rem,1.4vw,1.2rem);
+  line-height:1.7;
+  color:rgba(255,255,255,.66);
+}
+
+/* --- 7. Galerie realizací ------------------------------------- */
+.gallery-section{
+  background:#fff;
+  padding:clamp(56px,8vw,96px) 0;
+}
+.gallery{
+  columns:4 300px;
+  column-gap:14px;
+}
+.gallery-item{
+  display:block;
+  width:100%;
+  margin:0 0 14px;
+  break-inside:avoid;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:zoom-in;
+  background:var(--line);
+}
+.gallery-item img{
+  display:block;width:100%;height:auto;
+  transition:transform .5s var(--ease-out);
+}
+.gallery-item:hover img{transform:scale(1.05)}
+
+@media (max-width:900px){
+  .gallery{columns:2 200px}
+}
+@media (max-width:520px){
+  .gallery{columns:1}
+}
+
+/* --- 7b. Lightbox ----------------------------------------------- */
+.lightbox{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(20,15,10,.94);
+  display:none;
+  align-items:center;justify-content:center;
+  padding:60px;
+}
+.lightbox.is-open{display:flex}
+.lightbox img{
+  max-width:100%;max-height:100%;
+  display:block;border-radius:4px;
+}
+.lightbox-close,.lightbox-prev,.lightbox-next{
+  position:absolute;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;
+  background:rgba(255,255,255,.1);
+  border-radius:50%;
+  cursor:pointer;
+  transition:background .25s var(--ease-out);
+}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,.2)}
+.lightbox-close{top:20px;right:20px;width:44px;height:44px}
+.lightbox-prev{left:20px;top:50%;transform:translateY(-50%);width:52px;height:52px}
+.lightbox-next{right:20px;top:50%;transform:translateY(-50%);width:52px;height:52px}
+@media (max-width:640px){
+  .lightbox{padding:16px}
+  .lightbox-close{top:10px;right:10px}
+  .lightbox-prev{left:6px}
+  .lightbox-next{right:6px}
+  .lightbox-prev,.lightbox-next{width:42px;height:42px}
+}
+
+/* --- 8. Reference — seznam firem ------------------------------- */
+.clients-section{
+  background:#f7f5f3;
+  padding:clamp(56px,8vw,96px) 0;
+}
+.clients-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.5rem,2.6vw,2.1rem);
+  color:var(--ink);
+  letter-spacing:-.005em;
+  margin-bottom:clamp(24px,3.2vw,34px);
+}
+.clients-list{
+  list-style:none;
+  margin:0;padding:0;
+  columns:2 340px;
+  column-gap:40px;
+}
+.clients-list li{
+  break-inside:avoid;
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+.clients-list li:last-child{border-bottom:1px solid var(--line)}
+.ref-name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.ref-desc{display:block;margin-top:3px;font-size:.9rem;color:var(--ink-soft)}
+@media (max-width:640px){
+  .clients-list{columns:1}
+}
+
+/* --- 9. Závěrečná CTA sekce ---------------------------------- */
+.page-cta{
+  position:relative;
+  background:#fff;
+  padding:clamp(56px,8vw,110px) 0;
+  text-align:center;
+}
+.page-cta-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.7rem,3.4vw,2.5rem);
+  color:var(--ink);
+  max-width:24ch;
+  margin-inline:auto;
+}
+.page-cta-title em{font-style:normal;color:var(--orange)}
+.page-cta-text{
+  margin:16px auto 0;
+  max-width:52ch;
+  font-size:clamp(1rem,1.2vw,1.1rem);
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.page-cta-actions{
+  margin-top:clamp(28px,3.6vw,36px);
+  display:flex;flex-wrap:wrap;gap:14px;
+  justify-content:center;
+}
+.page-cta-actions .btn-whatsapp{width:auto}
+.page-cta-actions .btn-whatsapp .flip-face{width:auto}
+
+@media (max-width:640px){
+  .page-cta-actions{flex-direction:column;align-items:stretch}
+  .page-cta-actions a,.page-cta-actions .flip-face{width:100%;justify-content:center}
+}
+
+/* --- 10. Patička ------------------------------------------------ */
+.site-footer{
+  background:var(--ink);
+  color:rgba(255,255,255,.62);
+}
+.footer-cta{
+  padding:clamp(44px,6.4vw,72px) 0;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.footer-cta-inner{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:clamp(22px,4vw,40px);
+}
+.footer-cta-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.5rem,3vw,2.3rem);
+  line-height:1.28;
+  color:#fff;
+  letter-spacing:-.005em;
+  max-width:19ch;
+}
+
+.footer-main{padding:clamp(44px,6.4vw,68px) 0}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr 1fr;
+  gap:clamp(24px,3.4vw,40px);
+}
+.footer-col:not(:first-child){
+  padding-left:clamp(20px,3vw,40px);
+  border-left:1px solid rgba(255,255,255,.14);
+}
+.footer-logo-wrap{
+  display:inline-flex;
+  background:#fff;
+  padding:10px 16px;
+  border-radius:12px;
+  margin-bottom:16px;
+}
+.footer-logo{display:block;height:22px;width:auto}
+.footer-tagline{
+  max-width:34ch;
+  font-size:.92rem;
+  line-height:1.65;
+}
+.footer-col-title{
+  display:block;
+  font-family:var(--font-ui);
+  font-weight:600;
+  font-size:.82rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:16px;
+}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{
+  font-size:.92rem;
+  color:rgba(255,255,255,.62);
+  transition:color .25s var(--ease-out);
+}
+.footer-links a:hover{color:var(--orange)}
+.footer-note{max-width:26ch;font-size:.92rem;line-height:1.65}
+.footer-meta{
+  margin-top:16px;
+  max-width:28ch;
+  font-size:.86rem;
+  line-height:1.65;
+  color:rgba(255,255,255,.5);
+}
+
+.footer-bottom{
+  padding:20px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.footer-bottom-inner{
+  display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
+  font-size:.8rem;
+  color:rgba(255,255,255,.4);
+}
+.footer-bottom-inner a{color:rgba(255,255,255,.4);transition:color .25s var(--ease-out)}
+.footer-bottom-inner a:hover{color:var(--orange)}
+
+@media (max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;row-gap:clamp(28px,6vw,40px)}
+  .footer-col:nth-child(3),.footer-col:nth-child(4){border-left:1px solid rgba(255,255,255,.14);padding-left:clamp(20px,3vw,40px)}
+  .footer-col:nth-child(1),.footer-col:nth-child(2){padding-left:0;border-left:0}
+}
+@media (max-width:560px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-col{padding-left:0 !important;border-left:0 !important}
+  .footer-col:not(:first-child){padding-top:24px;border-top:1px solid rgba(255,255,255,.14) !important}
+  .footer-bottom-inner{justify-content:flex-start}
+}
+
+/* --- 11. Responzivita a přístupnost --------------------------- */
+@media (max-width:1200px){
+  .nav,.header-cta{display:none}
+  .burger{display:flex}
+}
+@media (max-width:640px){
+  :root{--header-h:72px;--header-h-sm:64px}
+  body{font-size:17px}
+  .btn{width:100%;justify-content:center}
+  .flip-face{display:flex;width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
+</style>
+
+<noscript><style>
+  .burger{display:none !important}
+</style></noscript>
+</head>
+
+<body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
+
+<!-- ===== Hlavička ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Krystal — domů">
+      <img id="brandLogo" src="logo_transparent.png" alt="Krystal" width="1564" height="308" decoding="async">
+    </a>
+
+    <nav class="nav" aria-label="Hlavní navigace">
+      <a class="nav-link" href="index.html#hero">Úvod</a>
+      <a class="nav-link" href="sluzby.html">Služby</a>
+      <a class="nav-link" href="realizace.html" aria-current="page">Realizace</a>
+      <a class="nav-link" href="cenik.html">Ceník</a>
+      <a class="nav-link" href="o-nas.html">O nás</a>
+      <a class="nav-link" href="caste-dotazy.html">Časté dotazy</a>
+      <a class="nav-link" href="kontakt.html">Kontakt</a>
+    </nav>
+    <a class="header-cta cta-flip" href="tel:+420777670021">
+      <span class="flip-inner">
+        <span class="flip-face flip-front"><span class="cta-label">Zavolejte nám</span></span>
+        <span class="flip-face flip-back" aria-hidden="true"><span class="cta-label">Zavolejte nám</span></span>
+      </span>
+    </a>
+
+    <button class="burger" id="burger" type="button"
+            aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Vysouvací menu ===== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-list" aria-label="Mobilní navigace">
+    <a href="index.html#hero">Úvod /</a>
+    <a href="sluzby.html">Služby /</a>
+    <a href="realizace.html">Realizace /</a>
+    <a href="cenik.html">Ceník /</a>
+    <a href="o-nas.html">O nás /</a>
+    <a href="caste-dotazy.html">Časté dotazy /</a>
+    <a href="kontakt.html">Kontakt /</a>
+  </nav>
+  <div class="menu-foot">
+    <a href="tel:+420777670021">+420 777 670 021</a>
+    <a href="mailto:info@fa-krystal.cz">info@fa-krystal.cz</a>
+  </div>
+</div>
+
+<main id="obsah">
+
+  <!-- ===== Úvod stránky ===== -->
+  <section class="page-head">
+    <div class="container">
+      <h1 class="page-title">Realizace</h1>
+      <p class="page-lead">
+        Výběr z fotografií našich zakázek a přehled firem, úřadů a institucí,
+        pro které jsme realizovali renovaci nebo čištění kamenných
+        a betonových povrchů.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Galerie ===== -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery" id="gallery">
+        <a class="gallery-item" href="realizace-foto/IMG_1570-web.jpg"><img src="realizace-foto/IMG_1570-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_1579-web.jpg"><img src="realizace-foto/IMG_1579-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2261-web.jpg"><img src="realizace-foto/IMG_2261-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2262-web.jpg"><img src="realizace-foto/IMG_2262-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2278-web.jpg"><img src="realizace-foto/IMG_2278-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2290-web.jpg"><img src="realizace-foto/IMG_2290-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2380-web.jpg"><img src="realizace-foto/IMG_2380-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2384-web.jpg"><img src="realizace-foto/IMG_2384-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2388-web.jpg"><img src="realizace-foto/IMG_2388-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2389-web.jpg"><img src="realizace-foto/IMG_2389-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2390-web.jpg"><img src="realizace-foto/IMG_2390-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2391-web.jpg"><img src="realizace-foto/IMG_2391-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2761-web.jpg"><img src="realizace-foto/IMG_2761-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2762-web.jpg"><img src="realizace-foto/IMG_2762-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2765-web.jpg"><img src="realizace-foto/IMG_2765-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3021-web.jpg"><img src="realizace-foto/IMG_3021-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3022-web.jpg"><img src="realizace-foto/IMG_3022-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3029-web.jpg"><img src="realizace-foto/IMG_3029-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3041-web.jpg"><img src="realizace-foto/IMG_3041-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3042-web.jpg"><img src="realizace-foto/IMG_3042-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3503-web.jpg"><img src="realizace-foto/IMG_3503-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3999-web.jpg"><img src="realizace-foto/IMG_3999-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4002-web.jpg"><img src="realizace-foto/IMG_4002-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4005-web.jpg"><img src="realizace-foto/IMG_4005-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4011-web.jpg"><img src="realizace-foto/IMG_4011-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4014-web.jpg"><img src="realizace-foto/IMG_4014-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4098-web.jpg"><img src="realizace-foto/IMG_4098-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4099-web.jpg"><img src="realizace-foto/IMG_4099-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4100-web.jpg"><img src="realizace-foto/IMG_4100-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4101-web.jpg"><img src="realizace-foto/IMG_4101-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4463-web.jpg"><img src="realizace-foto/IMG_4463-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4465-web.jpg"><img src="realizace-foto/IMG_4465-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4466-web.jpg"><img src="realizace-foto/IMG_4466-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4467-web.jpg"><img src="realizace-foto/IMG_4467-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4469-web.jpg"><img src="realizace-foto/IMG_4469-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4473-web.jpg"><img src="realizace-foto/IMG_4473-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4476-web.jpg"><img src="realizace-foto/IMG_4476-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4482-web.jpg"><img src="realizace-foto/IMG_4482-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4578-web.jpg"><img src="realizace-foto/IMG_4578-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4579-web.jpg"><img src="realizace-foto/IMG_4579-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4596-web.jpg"><img src="realizace-foto/IMG_4596-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4603-web.jpg"><img src="realizace-foto/IMG_4603-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4604-web.jpg"><img src="realizace-foto/IMG_4604-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4605-web.jpg"><img src="realizace-foto/IMG_4605-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4609-web.jpg"><img src="realizace-foto/IMG_4609-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4610-web.jpg"><img src="realizace-foto/IMG_4610-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4611-web.jpg"><img src="realizace-foto/IMG_4611-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4636-web.jpg"><img src="realizace-foto/IMG_4636-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4637-web.jpg"><img src="realizace-foto/IMG_4637-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4638-web.jpg"><img src="realizace-foto/IMG_4638-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4642-web.jpg"><img src="realizace-foto/IMG_4642-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4643-web.jpg"><img src="realizace-foto/IMG_4643-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4644-web.jpg"><img src="realizace-foto/IMG_4644-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4650-web.jpg"><img src="realizace-foto/IMG_4650-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/4328-web.jpg"><img src="realizace-foto/4328-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1197"></a>
+        <a class="gallery-item" href="realizace-foto/4329-web.jpg"><img src="realizace-foto/4329-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1197"></a>
+        <a class="gallery-item" href="realizace-foto/4330-web.jpg"><img src="realizace-foto/4330-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1197"></a>
+        <a class="gallery-item" href="realizace-foto/4474-web.jpg"><img src="realizace-foto/4474-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/4481-web.jpg"><img src="realizace-foto/4481-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/4482-web.jpg"><img src="realizace-foto/4482-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/4485-web.jpg"><img src="realizace-foto/4485-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5126-web.jpg"><img src="realizace-foto/5126-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5127-web.jpg"><img src="realizace-foto/5127-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5128-web.jpg"><img src="realizace-foto/5128-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5534-web.jpg"><img src="realizace-foto/5534-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5535-web.jpg"><img src="realizace-foto/5535-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5537-web.jpg"><img src="realizace-foto/5537-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/5538-web.jpg"><img src="realizace-foto/5538-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/6484-web.jpg"><img src="realizace-foto/6484-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/6633-web.jpg"><img src="realizace-foto/6633-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/6634-web.jpg"><img src="realizace-foto/6634-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/6635-web.jpg"><img src="realizace-foto/6635-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/6636-web.jpg"><img src="realizace-foto/6636-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/6649-web.jpg"><img src="realizace-foto/6649-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/6727-web.jpg"><img src="realizace-foto/6727-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/7223-web.jpg"><img src="realizace-foto/7223-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/7224-web.jpg"><img src="realizace-foto/7224-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/8090-web.jpg"><img src="realizace-foto/8090-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/8091-web.jpg"><img src="realizace-foto/8091-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/8092-web.jpg"><img src="realizace-foto/8092-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
+        <a class="gallery-item" href="realizace-foto/8369-web.jpg"><img src="realizace-foto/8369-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/8370-web.jpg"><img src="realizace-foto/8370-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
+        <a class="gallery-item" href="realizace-foto/D4EFC5FF-A126-4242-A949-93B7AE779A35-web.jpg"><img src="realizace-foto/D4EFC5FF-A126-4242-A949-93B7AE779A35-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="900"></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__1_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__1_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__2_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__2_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__3_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__3_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__4_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__4_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_40-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_40-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reference — seznam firem ===== -->
+  <section class="clients-section">
+    <div class="container">
+      <h2 class="clients-title">Kde jsme realizovali</h2>
+      <ul class="clients-list">
+        <li><span class="ref-name">Hotel Hilton Praha</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Hotel Rennaissance Praha</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Residence Riegrovy sady, Praha</span><span class="ref-desc">Renovace podlah a schodů z litého teraca</span></li>
+        <li><span class="ref-name">Bytové domy Praha 1</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">KD Jesenice u Plzně</span><span class="ref-desc">Renovace mramorových dlažeb a schodů</span></li>
+        <li><span class="ref-name">Vila na ul. Šrobárové, Praha</span><span class="ref-desc">Leštění mramorových dlažeb</span></li>
+        <li><span class="ref-name">Fakultní nemocnice Olomouc</span><span class="ref-desc">Renovace teracových dlažeb</span></li>
+        <li><span class="ref-name">Hotel Imperiál Ostrava</span><span class="ref-desc">Renovace mramorových dlažeb a schodů</span></li>
+        <li><span class="ref-name">Okresní státní zastupitelství v Jeseníku</span><span class="ref-desc">Renovace mramorových a ošetření marmolea</span></li>
+        <li><span class="ref-name">Valdek, Praha</span><span class="ref-desc">Renovace schodiště a mramorových dlažeb</span></li>
+        <li><span class="ref-name">Valdek, Praha</span><span class="ref-desc">Pokládka mramorových dlažeb, montáž mramorových schodů</span></li>
+        <li><span class="ref-name">Hanácké železárny Olomouc</span><span class="ref-desc">Renovace marmolea</span></li>
+        <li><span class="ref-name">Okresní úřad, Jeseník</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Divadlo P. Bezruče, Jeseník</span><span class="ref-desc">Renovace mramorové dlažby</span></li>
+        <li><span class="ref-name">Prefa systém s.r.o., Olomouc</span><span class="ref-desc">Renovace podlah z PVC</span></li>
+        <li><span class="ref-name">Gatner elektromarket s.r.o., Jeseník</span><span class="ref-desc">Čištění dlažeb</span></li>
+        <li><span class="ref-name">ČSOB Praha</span><span class="ref-desc">Čištění dlažeb</span></li>
+        <li><span class="ref-name">KD Písečná u Jeseníka</span><span class="ref-desc">Renovace mramorových dlažeb a schodů</span></li>
+        <li><span class="ref-name">Dům Telč</span><span class="ref-desc">Broušení dlažeb z umělého kamene</span></li>
+        <li><span class="ref-name">MŠ Mikulovice u Jeseníka</span><span class="ref-desc">Chemické čištění a pemprlování žulových schodů</span></li>
+        <li><span class="ref-name">Hotel Albatros, Jeseník</span><span class="ref-desc">Chemické čištění žulových dlažeb</span></li>
+        <li><span class="ref-name">L.Š.U. Franze Schuberta, Zlaté Hory</span><span class="ref-desc">Renovace mramorové dlažby</span></li>
+        <li><span class="ref-name">Octavian s.r.o., Praha</span><span class="ref-desc">Renovace dlažeb z Jury</span></li>
+        <li><span class="ref-name">Priessnitzovy léčebné lázně a.s., Jeseník</span><span class="ref-desc">Broušení betonových podlah</span></li>
+        <li><span class="ref-name">Profi Beauty, Praha</span><span class="ref-desc">Čištění dlažeb a schodů</span></li>
+        <li><span class="ref-name">Finesa reality s.r.o., Olomouc</span><span class="ref-desc">Renovace mramorových dlažeb a schodů</span></li>
+        <li><span class="ref-name">Penzion pro seniory, Jeseník</span><span class="ref-desc">Renovace podlah z PVC a kamene</span></li>
+        <li><span class="ref-name">Český rozhlas, Praha</span><span class="ref-desc">Čištění keramického obkladu</span></li>
+        <li><span class="ref-name">Výchovný ústav mládeže, Vidnava</span><span class="ref-desc">Renovace parket, čištění koberců, mytí oken</span></li>
+        <li><span class="ref-name">ZŠ Průchodní, Jeseník</span><span class="ref-desc">Chemické ošetření dlažeb a marmolea, čištění koberců</span></li>
+        <li><span class="ref-name">Supermarket Billa, a.s.</span><span class="ref-desc">Hloubkové čištění dlažeb</span></li>
+        <li><span class="ref-name">Sanatorium Edel, Zlaté Hory</span><span class="ref-desc">Renovace a údržba marmolea, chemické čištění dlažeb</span></li>
+        <li><span class="ref-name">Priessnitzovy lázně a.s.</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Priessnitzovy lázně a.s.</span><span class="ref-desc">Renovace a údržba marmolea</span></li>
+        <li><span class="ref-name">Priessnitzovy léčebné lázně a.s.</span><span class="ref-desc">Jehličkování, štokování žulového schodiště</span></li>
+        <li><span class="ref-name">Hotel Zlatý Chlum, Česká Ves</span><span class="ref-desc">Renovace mramorových dlažeb a schodiště</span></li>
+        <li><span class="ref-name">Restaurace Janis, Vidnava</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Základní škola, Loučná n. Desnou</span><span class="ref-desc">Chemické čištění a polymerace linolea a litého teraca</span></li>
+        <li><span class="ref-name">Okresní soud, Bruntál</span><span class="ref-desc">Renovace schodiště a mramorových dlažeb</span></li>
+        <li><span class="ref-name">Město Bruntál</span><span class="ref-desc">Renovace mramorových schodů a dlažeb</span></li>
+        <li><span class="ref-name">Základní škola na ul. Nábřežní 413</span><span class="ref-desc">Čištění a polymerace podlah z PVC</span></li>
+        <li><span class="ref-name">Kulturní dům, Doudleby nad Orlicí</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Moravské divadlo, Olomouc</span><span class="ref-desc">Renovace mramorového schodiště a dlažeb</span></li>
+        <li><span class="ref-name">Kostel sv. Marie, Šumperk</span><span class="ref-desc">Broušení dlažeb z Maletínského pískovce, impregnace, renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Městská knihovna, Šumperk</span><span class="ref-desc">Chemické čištění linolea a polymerace</span></li>
+        <li><span class="ref-name">Radnice, Kroměříž</span><span class="ref-desc">Renovace mramorových dlažeb</span></li>
+        <li><span class="ref-name">Hotel Aurum, Zlaté Hory</span></li>
+        <li><span class="ref-name">Optika Horáček, Jeseník</span><span class="ref-desc">Renovace schodiště</span></li>
+        <li><span class="ref-name">Optika Červený, Jeseník</span><span class="ref-desc">Renovace mramorové dlažby</span></li>
+        <li><span class="ref-name">Osapo, v.o.s., Šumperk</span><span class="ref-desc">Broušení a impregnace železobetonového skeletu, chemické čištění dlažeb</span></li>
+        <li><span class="ref-name">Státní zámek Jánský vrch, Javorník</span><span class="ref-desc">Čištění schodiště</span></li>
+        <li><span class="ref-name">Penzion Slatina, Lipová Lázně</span><span class="ref-desc">Renovace teracových dlažeb</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Závěrečná CTA ===== -->
+  <section class="page-cta">
+    <div class="container">
+      <h2 class="page-cta-title">Chcete podobný <em>výsledek?</em></h2>
+      <p class="page-cta-text">
+        Popište nám stav povrchu — poradíme, co se vyplatí, a připravíme
+        nezávaznou nabídku na míru.
+      </p>
+      <div class="page-cta-actions">
+        <a class="btn cta-flip" href="kontakt.html">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <span class="cta-label">Nezávazná poptávka</span>
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 6h15M11.5 1 16.8 6l-5.3 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="flip-face flip-back" aria-hidden="true">
+              <span class="cta-label">Nezávazná poptávka</span>
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 6h15M11.5 1 16.8 6l-5.3 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </span>
+        </a>
+        <a class="btn-whatsapp cta-flip" href="https://wa.me/420777670021?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20nez%C3%A1vaznou%20konzultaci." target="_blank" rel="noopener">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              <span class="cta-label">Napsat na WhatsApp</span>
+            </span>
+            <span class="flip-face flip-back" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+              <span class="cta-label">Napsat na WhatsApp</span>
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Zavřít">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1.5 1.5l13 13M14.5 1.5l-13 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+  <button class="lightbox-prev" id="lightboxPrev" type="button" aria-label="Předchozí fotka">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 3 5 9l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="Zvětšená fotografie realizace">
+  <button class="lightbox-next" id="lightboxNext" type="button" aria-label="Další fotka">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 3 13 9l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<!-- ===== Patička ===== -->
+<footer class="site-footer">
+  <div class="footer-cta">
+    <div class="container footer-cta-inner">
+      <h2 class="footer-cta-title">Máte povrch, který si zaslouží druhý život?</h2>
+      <a class="btn cta-flip" href="tel:+420777670021">
+        <span class="flip-inner">
+          <span class="flip-face flip-front"><span class="cta-label">Zavolejte nám</span></span>
+          <span class="flip-face flip-back" aria-hidden="true"><span class="cta-label">Zavolejte nám</span></span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <span class="footer-logo-wrap">
+          <img class="footer-logo" src="logo_transparent.png" alt="Krystal" width="1564" height="308" loading="lazy">
+        </span>
+        <p class="footer-tagline">Podlahářství, renovace přírodního i umělého kamene a ošetření pohledového betonu. Povrchy bez kompromisu.</p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Navigace</span>
+        <nav class="footer-links" aria-label="Navigace v patičce">
+          <a href="index.html#hero">Úvod</a>
+          <a href="sluzby.html">Služby</a>
+          <a href="realizace.html">Realizace</a>
+          <a href="cenik.html">Ceník</a>
+          <a href="o-nas.html">O nás</a>
+          <a href="caste-dotazy.html">Časté dotazy</a>
+          <a href="kontakt.html">Kontakt</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Kontakt</span>
+        <div class="footer-links">
+          <a href="tel:+420777670021">+420 777 670 021</a>
+          <a href="mailto:info@fa-krystal.cz">info@fa-krystal.cz</a>
+          <a href="https://wa.me/420777670021?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20nez%C3%A1vaznou%20konzultaci." target="_blank" rel="noopener">Napsat na WhatsApp</a>
+        </div>
+        <p class="footer-meta">
+          Biskupská 3330/10, 702 00 Ostrava<br>
+          IČ: 66138566<br>
+          DIČ: CZ6705281748 — jsme plátci DPH
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <span class="footer-col-title">Působnost</span>
+        <p class="footer-note">Realizujeme zakázky prakticky po celé České republice.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© 2026 Krystal. Všechna práva vyhrazena.</span>
+      <span><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> · Web vytvořil <a href="https://www.web-pilot.cz" target="_blank" rel="noopener">WebPilot</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script>
+(function(){
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- 1. Logo: zkusí několik názvů, jinak vykreslí vektorovou náhradu --- */
+  (function logo(){
+    var img = document.getElementById("brandLogo");
+    if(!img) return;
+    var candidates = ["logo_transparent.png","logo.svg","logo.png","krystal-logo.svg","krystal-logo.png"];
+    var i = candidates.indexOf(img.getAttribute("src"));
+    i = i < 0 ? 0 : i;
+
+    img.addEventListener("error", function(){
+      i++;
+      if(i < candidates.length){ img.src = candidates[i]; return; }
+      var svg =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508 100" role="img" aria-label="Krystal">' +
+          '<rect width="100" height="100" fill="#ee7c21"/>' +
+          '<rect x="16" y="20" width="19" height="60" fill="#fff"/>' +
+          '<path d="M84 20H58L37 50l21 30h26L63 50z" fill="#fff"/>' +
+          '<text x="118" y="76" font-family="Michroma, Saira, sans-serif" font-size="62" ' +
+                'letter-spacing="2" fill="#2b2b2b">RYSTAL</text>' +
+        '</svg>';
+      var wrap = document.createElement("span");
+      wrap.innerHTML = svg;
+      var node = wrap.firstChild;
+      node.style.height = getComputedStyle(img).height;
+      img.replaceWith(node);
+    });
+  })();
+
+  /* --- 2. Scroll: zmenšení hlavičky (bez hero, žádný parallax) ----------- */
+  var header = document.getElementById("siteHeader");
+  var ticking = false;
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    header.classList.toggle("is-scrolled", y > 10);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+
+  /* --- 3. Menu ------------------------------------------------------------ */
+  var burger = document.getElementById("burger");
+  var menu   = document.getElementById("menu");
+
+  function setMenu(open){
+    document.body.classList.toggle("is-menu-open", open);
+    document.body.classList.toggle("is-locked", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+    menu.setAttribute("aria-hidden", open ? "false" : "true");
+  }
+  burger.addEventListener("click", function(){
+    setMenu(!document.body.classList.contains("is-menu-open"));
+  });
+  menu.addEventListener("click", function(e){
+    if(e.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && document.body.classList.contains("is-menu-open")) setMenu(false);
+  });
+  window.matchMedia("(min-width:1201px)").addEventListener("change", function(e){
+    if(e.matches) setMenu(false);
+  });
+
+  /* --- 4. Prémiová 3D flip animace CTA tlačítek (GSAP) ------------------- */
+  if(window.gsap && !reduce){
+    var _warn = console.warn.bind(console);
+    console.warn = function(msg){
+      if(typeof msg === "string" && msg.indexOf("not eligible for reset") > -1) return;
+      _warn.apply(console, arguments);
+    };
+
+    var fineHover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+    var ctas = document.querySelectorAll(".cta-flip");
+
+    ctas.forEach(function(el){
+      var inner = el.querySelector(".flip-inner");
+      if(!inner) return;
+
+      gsap.set(el,    {transformOrigin:"50% 50%", scaleX:1, scaleY:1});
+      gsap.set(inner, {transformStyle:"preserve-3d", rotateX:0});
+
+      function setScale(v){
+        gsap.to(el, {scaleX:v, scaleY:v, duration:.4, ease:"power3", overwrite:"auto"});
+      }
+      function flipTo(state){
+        gsap.to(inner, {
+          rotateX: state ? 180 : 0,
+          duration: state ? .6 : .5,
+          ease: state ? "back.out(1.5)" : "power2.inOut",
+          overwrite:"auto"
+        });
+      }
+
+      if(fineHover){
+        el.addEventListener("pointerenter", function(e){
+          if(e.pointerType === "touch") return;
+          setScale(1.05); flipTo(true);
+        });
+        el.addEventListener("pointerleave", function(e){
+          if(e.pointerType === "touch") return;
+          setScale(1); flipTo(false);
+        });
+        el.addEventListener("focus", function(){
+          if(el.matches(":focus-visible")){ setScale(1.05); flipTo(true); }
+        });
+        el.addEventListener("blur", function(){ setScale(1); flipTo(false); });
+      }
+
+      el.addEventListener("pointerdown", function(e){
+        setScale(.95);
+        if(e.pointerType === "touch") flipTo(true);
+      });
+      el.addEventListener("pointerup", function(e){
+        var isTouch = e.pointerType === "touch";
+        setScale(fineHover && !isTouch ? 1.05 : 1);
+        if(isTouch) setTimeout(function(){ flipTo(false); }, 260);
+      });
+      el.addEventListener("pointercancel", function(){
+        setScale(1); flipTo(false);
+      });
+    });
+  }
+
+  /* --- 5. Galerie — lightbox se šipkami a klávesovou navigací ------------ */
+  (function lightbox(){
+    var items = Array.prototype.slice.call(document.querySelectorAll(".gallery-item"));
+    if(!items.length) return;
+
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lightboxImg");
+    var idx = 0;
+
+    function open(i){
+      idx = i;
+      lbImg.src = items[idx].getAttribute("href");
+      lb.classList.add("is-open");
+      document.body.classList.add("is-locked");
+    }
+    function close(){
+      lb.classList.remove("is-open");
+      document.body.classList.remove("is-locked");
+      lbImg.src = "";
+    }
+    function next(){ open((idx + 1) % items.length); }
+    function prev(){ open((idx - 1 + items.length) % items.length); }
+
+    items.forEach(function(el, i){
+      el.addEventListener("click", function(e){
+        e.preventDefault();
+        open(i);
+      });
+    });
+    document.getElementById("lightboxClose").addEventListener("click", close);
+    document.getElementById("lightboxNext").addEventListener("click", next);
+    document.getElementById("lightboxPrev").addEventListener("click", prev);
+    lb.addEventListener("click", function(e){ if(e.target === lb) close(); });
+    document.addEventListener("keydown", function(e){
+      if(!lb.classList.contains("is-open")) return;
+      if(e.key === "Escape") close();
+      if(e.key === "ArrowRight") next();
+      if(e.key === "ArrowLeft") prev();
+    });
+  })();
+})();
+</script>
+</body>
+</html>

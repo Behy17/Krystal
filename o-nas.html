@@ -3,32 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ceník — Krystal | podlahářství, renovace kamene a betonu</title>
-<meta name="description" content="Orientační ceník renovace kamene, betonových podlah a čištění dlažeb — broušení, leštění, impregnace, frézování i strojní mytí.">
+<title>O nás — Krystal | podlahářství, renovace kamene a betonu</title>
+<meta name="description" content="Krystal — řemeslo s dlouhou tradicí. Příběh firmy, zkušenosti, certifikace a technologie, se kterými renovujeme kamenné a betonové povrchy.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="canonical" href="https://www.stone-krystal.cz/cenik.html">
+<link rel="canonical" href="https://www.stone-krystal.cz/o-nas.html">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Krystal">
 <meta property="og:locale" content="cs_CZ">
-<meta property="og:title" content="Ceník — Krystal | podlahářství, renovace kamene a betonu">
-<meta property="og:description" content="Orientační ceník renovace kamene, betonových podlah a čištění dlažeb — broušení, leštění, impregnace, frézování i strojní mytí.">
-<meta property="og:url" content="https://www.stone-krystal.cz/cenik.html">
+<meta property="og:title" content="O nás — Krystal | podlahářství, renovace kamene a betonu">
+<meta property="og:description" content="Krystal — řemeslo s dlouhou tradicí. Příběh firmy, zkušenosti, certifikace a technologie, se kterými renovujeme kamenné a betonové povrchy.">
+<meta property="og:url" content="https://www.stone-krystal.cz/o-nas.html">
 <meta property="og:image" content="https://www.stone-krystal.cz/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ceník — Krystal | podlahářství, renovace kamene a betonu">
-<meta name="twitter:description" content="Orientační ceník renovace kamene, betonových podlah a čištění dlažeb — broušení, leštění, impregnace, frézování i strojní mytí.">
+<meta name="twitter:title" content="O nás — Krystal | podlahářství, renovace kamene a betonu">
+<meta name="twitter:description" content="Krystal — řemeslo s dlouhou tradicí. Příběh firmy, zkušenosti, certifikace a technologie, se kterými renovujeme kamenné a betonové povrchy.">
 <meta name="twitter:image" content="https://www.stone-krystal.cz/og-image.jpg">
-
 
 <style>
 /* ============================================================
-   KRYSTAL — stránka Ceník
+   KRYSTAL — stránka O nás
    Sdílené bloky (tokeny, reset, hlavička, menu, CTA flip systém)
-   jsou zkopírované ze sluzby.html / caste-dotazy.html — stejný
-   vzor samostatných HTML souborů bez buildu jako zbytek webu.
+   jsou zkopírované z kontakt.html / realizace.html — stejný vzor
+   samostatných HTML souborů bez buildu jako zbytek webu.
    ============================================================ */
 
 /* --- 1. Design tokeny ------------------------------------- */
@@ -313,7 +312,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   line-height:1.08;
   letter-spacing:-.005em;
   color:#fff;
-  max-width:18ch;
+  max-width:16ch;
 }
 .page-lead{
   margin-top:18px;
@@ -323,146 +322,242 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   color:rgba(255,255,255,.66);
 }
 
-/* --- 7. Ceník ------------------------------------------------ */
-.price-section{background:#fff;padding:clamp(56px,8vw,90px) 0 clamp(48px,7vw,72px)}
-.price-group{margin-bottom:clamp(40px,5.5vw,60px)}
-.price-group:last-of-type{margin-bottom:0}
+/* --- 7. Náš příběh + zkušenosti -------------------------------- */
+.story-section{
+  background:#fff;
+  padding:clamp(56px,8vw,96px) 0;
+}
+.story-grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+  gap:clamp(32px,4vw,56px);
+  align-items:start;
+}
+.story-content,.story-stats{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .8s var(--ease-out), transform .8s var(--ease-out);
+}
+.story-section.is-visible .story-content{opacity:1;transform:none}
+.story-section.is-visible .story-stats{opacity:1;transform:none;transition-delay:.12s}
 
-.price-group-title{
+.story-title{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:clamp(1.35rem,2.2vw,1.8rem);
-  color:var(--ink);
+  font-size:clamp(1.7rem,3.2vw,2.4rem);
+  line-height:1.2;
   letter-spacing:-.005em;
-  margin-bottom:clamp(18px,2.4vw,26px);
-  opacity:0;transform:translateY(18px);
-  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
-}
-.price-table{
-  border:1px solid var(--line);
-  border-radius:clamp(12px,1.6vw,18px);
-  overflow:hidden;
-  opacity:0;transform:translateY(22px);
-  transition:opacity .7s var(--ease-out) .08s, transform .7s var(--ease-out) .08s;
-}
-.price-section.is-visible .price-group-title,
-.price-section.is-visible .price-table{opacity:1;transform:none}
-
-.price-row{
-  display:flex;align-items:baseline;justify-content:space-between;gap:20px;
-  padding:clamp(16px,2vw,20px) clamp(20px,2.6vw,28px);
-  transition:background-color .3s var(--ease-out);
-}
-.price-row:not(:last-child){border-bottom:1px solid var(--line)}
-.price-row:nth-child(odd){background:rgba(43,43,43,.025)}
-.price-row:hover{background:rgba(238,124,33,.06)}
-
-.price-name{
-  font-size:clamp(.96rem,1.15vw,1.05rem);
   color:var(--ink);
-  font-weight:400;
 }
-.price-value{
-  flex:0 0 auto;
-  font-family:var(--font-ui);
-  font-weight:600;
-  font-size:clamp(.96rem,1.15vw,1.05rem);
-  color:var(--orange-dark);
-  font-variant-numeric:tabular-nums;
-  white-space:nowrap;
-}
-
-.price-note{
-  margin-top:clamp(24px,3.2vw,32px);
-  max-width:100%;
-  white-space:nowrap;
-  font-size:.9rem;
-  line-height:1.6;
+.story-title em{font-style:normal;color:var(--orange)}
+.story-content p{
+  margin-top:16px;
+  font-size:1rem;
+  line-height:1.75;
   color:var(--ink-soft);
 }
-@media (max-width:760px){
-  .price-note{white-space:normal}
+
+.story-stats{
+  display:flex;flex-direction:column;
+  margin-top:clamp(8px,1.2vw,12px);
+}
+.stat-item{
+  padding:clamp(18px,2.4vw,24px) 0;
+  border-top:1px solid var(--line);
+}
+.stat-item:last-child{border-bottom:1px solid var(--line)}
+.stat-number{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.8rem,2.6vw,2.3rem);
+  color:var(--orange);
+  line-height:1;
+}
+.stat-label{
+  display:block;
+  margin-top:6px;
+  font-size:.94rem;
+  color:var(--ink-soft);
 }
 
-@media (max-width:640px){
-  .price-row{flex-direction:column;align-items:flex-start;gap:6px}
-  .price-value{font-size:1rem}
+@media (max-width:900px){
+  .story-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .price-group-title,.price-table{opacity:1;transform:none;transition:none}
+  .story-content,.story-stats{opacity:1;transform:none;transition:none}
 }
 
-/* --- 7b. Jak to funguje? — proces ve čtyřech krocích --------- */
-.steps{
+/* --- 7b. S čím se na nás obracíte ------------------------------- */
+.needs-section{
+  background:#f7f5f3;
+  padding:clamp(56px,8vw,96px) 0;
+}
+.needs-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  color:var(--ink);
+  letter-spacing:-.005em;
+  max-width:22ch;
+}
+.needs-title em{font-style:normal;color:var(--orange)}
+.needs-lead{
+  margin-top:16px;
+  max-width:74ch;
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--ink-soft);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
+}
+.needs-section.is-visible .needs-lead{opacity:1;transform:none}
+
+.needs-checklist{
+  list-style:none;margin:clamp(28px,3.6vw,36px) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px 32px;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  transition-delay:.08s;
+}
+.needs-section.is-visible .needs-checklist{opacity:1;transform:none}
+.needs-checklist li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.96rem;color:var(--ink);
+}
+.needs-icon{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;margin-top:1px;
+  background:var(--orange);color:#fff;
+}
+.needs-icon svg{display:block}
+
+.needs-grid{
+  margin-top:clamp(40px,5vw,56px);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.6vw,32px);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
+  transition-delay:.16s;
+}
+.needs-section.is-visible .needs-grid{opacity:1;transform:none}
+.needs-card{
+  background:#fff;
+  border-radius:clamp(14px,1.8vw,22px);
+  padding:clamp(26px,3.2vw,36px);
+}
+.needs-card h3{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.1rem,1.6vw,1.35rem);
+  color:var(--ink);
+  margin-bottom:16px;
+}
+.needs-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.needs-card li{
+  display:flex;align-items:flex-start;gap:11px;
+  font-size:.94rem;line-height:1.55;color:var(--ink-soft);
+}
+.needs-card .needs-icon{background:rgba(238,124,33,.12);color:var(--orange)}
+.needs-card-accent{background:var(--ink)}
+.needs-card-accent h3{color:#fff}
+.needs-card-accent li{color:rgba(255,255,255,.7)}
+.needs-card-accent .needs-icon{background:rgba(238,124,33,.18);color:var(--orange)}
+
+@media (max-width:900px){
+  .needs-checklist{grid-template-columns:1fr}
+  .needs-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .needs-lead,.needs-checklist,.needs-grid{opacity:1;transform:none;transition:none}
+}
+
+/* --- 8. Certifikace --------------------------------------------- */
+.cert-section{
   position:relative;
   background:var(--ink);
   padding:clamp(56px,8vw,96px) 0;
 }
-.steps-title{
+.cert-card{
+  max-width:640px;
+  margin-inline:auto;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+}
+.cert-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:64px;height:64px;
+  border-radius:50%;
+  background:rgba(238,124,33,.12);
+  color:var(--orange);
+}
+.cert-title{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:clamp(1.9rem,4vw,3rem);
-  line-height:1.18;
-  letter-spacing:-.005em;
+  font-size:clamp(1.3rem,2.2vw,1.7rem);
   color:#fff;
-  max-width:16ch;
-  margin-bottom:clamp(40px,6vw,64px);
 }
-.steps-grid{
+.cert-text{
+  max-width:52ch;
+  font-size:1rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.66);
+}
+
+/* --- 9. Technologie ---------------------------------------------- */
+.tech-section{
+  background:#f7f5f3;
+  padding:clamp(56px,8vw,96px) 0;
+}
+.tech-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.5rem,2.6vw,2.1rem);
+  color:var(--ink);
+  letter-spacing:-.005em;
+  margin-bottom:clamp(28px,3.6vw,40px);
+}
+.tech-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:clamp(20px,3vw,32px);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:clamp(14px,1.8vw,20px);
+  overflow:hidden;
 }
-.steps-item{
-  padding-top:clamp(18px,2.4vw,26px);
-  border-top:1px solid rgba(255,255,255,.16);
-  opacity:0;transform:translateY(22px);
-  transition:opacity .7s var(--ease-out), transform .7s var(--ease-out);
+.tech-item{
+  background:#fff;
+  padding:clamp(24px,2.6vw,30px) clamp(20px,2.4vw,26px);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .6s var(--ease-out), transform .6s var(--ease-out);
 }
-.steps.is-visible .steps-item{opacity:1;transform:none}
-.steps-item:nth-child(1){transition-delay:.05s}
-.steps-item:nth-child(2){transition-delay:.14s}
-.steps-item:nth-child(3){transition-delay:.23s}
-.steps-item:nth-child(4){transition-delay:.32s}
-.steps-index{
-  display:block;
+.tech-section.is-visible .tech-item{opacity:1;transform:none}
+.tech-item:nth-child(1){transition-delay:.03s}
+.tech-item:nth-child(2){transition-delay:.09s}
+.tech-item:nth-child(3){transition-delay:.15s}
+.tech-item:nth-child(4){transition-delay:.21s}
+.tech-item h3{
   font-family:var(--font-ui);
   font-weight:600;
-  font-size:.9rem;
-  letter-spacing:.03em;
-  color:var(--orange);
-  font-variant-numeric:tabular-nums;
-  margin-bottom:clamp(12px,1.6vw,18px);
+  font-size:.98rem;
+  color:var(--ink);
+  margin-bottom:7px;
 }
-.steps-name{
-  font-family:var(--font-display);
-  font-weight:400;
-  font-size:clamp(1.05rem,1.3vw,1.25rem);
-  line-height:1.3;
-  color:#fff;
-  letter-spacing:-.005em;
-}
-.steps-text{
-  margin-top:10px;
-  font-size:clamp(.9rem,1vw,.98rem);
-  line-height:1.55;
-  color:rgba(255,255,255,.6);
-}
+.tech-item p{font-size:.87rem;line-height:1.55;color:var(--ink-soft)}
 
-@media (max-width:900px){
-  .steps-grid{grid-template-columns:repeat(2,1fr);row-gap:clamp(32px,6vw,44px)}
+@media (max-width:1100px){
+  .tech-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:520px){
-  .steps-grid{grid-template-columns:1fr}
+@media (max-width:640px){
+  .tech-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
-  .steps-item{opacity:1;transform:none;transition:none}
+  .tech-item{opacity:1;transform:none;transition:none}
 }
 
-/* --- 8. Závěrečná CTA sekce ---------------------------------- */
+/* --- 10. Závěrečná CTA sekce ---------------------------------- */
 .page-cta{
   position:relative;
-  background:#f7f5f3;
+  background:#fff;
   padding:clamp(56px,8vw,110px) 0;
   text-align:center;
 }
@@ -495,7 +590,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   .page-cta-actions a,.page-cta-actions .flip-face{width:100%;justify-content:center}
 }
 
-/* --- 8b. Patička ---------------------------------------------- */
+/* --- 11. Patička ------------------------------------------------ */
 .site-footer{
   background:var(--ink);
   color:rgba(255,255,255,.62);
@@ -591,7 +686,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   .footer-bottom-inner{justify-content:flex-start}
 }
 
-/* --- 9. Responzivita a přístupnost --------------------------- */
+/* --- 12. Responzivita a přístupnost --------------------------- */
 @media (max-width:1200px){
   .nav,.header-cta{display:none}
   .burger{display:flex}
@@ -604,17 +699,18 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
-    animation-duration:.01ms !important;
+    animation-duration:.001ms !important;
     animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
+    transition-duration:.001ms !important;
   }
 }
 </style>
 
 <noscript><style>
   .burger{display:none !important}
-  .price-group-title,.price-table{opacity:1;transform:none}
-  .steps-item{opacity:1;transform:none}
+  .story-content,.story-stats{opacity:1;transform:none}
+  .needs-lead,.needs-checklist,.needs-grid{opacity:1;transform:none}
+  .tech-item{opacity:1;transform:none}
 </style></noscript>
 </head>
 
@@ -632,8 +728,8 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
       <a class="nav-link" href="index.html#hero">Úvod</a>
       <a class="nav-link" href="sluzby.html">Služby</a>
       <a class="nav-link" href="realizace.html">Realizace</a>
-      <a class="nav-link" href="cenik.html" aria-current="page">Ceník</a>
-      <a class="nav-link" href="o-nas.html">O nás</a>
+      <a class="nav-link" href="cenik.html">Ceník</a>
+      <a class="nav-link" href="o-nas.html" aria-current="page">O nás</a>
       <a class="nav-link" href="caste-dotazy.html">Časté dotazy</a>
       <a class="nav-link" href="kontakt.html">Kontakt</a>
     </nav>
@@ -673,98 +769,204 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   <!-- ===== Úvod stránky ===== -->
   <section class="page-head">
     <div class="container">
-      <h1 class="page-title">Ceník</h1>
+      <h1 class="page-title">O nás</h1>
       <p class="page-lead">
-        Orientační ceny za nejčastější renovační a čisticí práce. Finální
-        nabídku vždy sestavíme na míru podle stavu a rozsahu povrchu.
+        Řemeslo s dlouhou tradicí, poctivý přístup a technologie, které
+        povrchům vracejí jejich původní krásu.
       </p>
     </div>
   </section>
 
-  <!-- ===== Ceník ===== -->
-  <section class="price-section" id="priceSection">
-    <div class="container">
-
-      <div class="price-group">
-        <h2 class="price-group-title">Renovace kamene</h2>
-        <div class="price-table">
-          <div class="price-row">
-            <span class="price-name">Broušení mramorových a jiných podlah</span>
-            <span class="price-value">od 200 Kč/m²</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Leštění mramorových a jiných podlah</span>
-            <span class="price-value">od 100 Kč/m²</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Impregnace mramorových a jiných podlah</span>
-            <span class="price-value">od 80 Kč/m²</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Opravy, plombování, tmelení (hod. sazba)</span>
-            <span class="price-value">220 Kč/hod.</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Betonové podlahy – broušení</span>
-            <span class="price-value">od 150 Kč/m²</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Frézování betonových podlah</span>
-            <span class="price-value">od 180 Kč/m²</span>
-          </div>
-        </div>
+  <!-- ===== Náš příběh + zkušenosti =====
+       POZOR: text příběhu je zatím orientační koncept — doplní/upraví
+       se společně se zákazníkem podle skutečné historie firmy. -->
+  <section class="story-section" id="storySection">
+    <div class="container story-grid">
+      <div class="story-content">
+        <h2 class="story-title">Náš <em>příběh</em></h2>
+        <p>
+          Krystal vznikl z jednoduché myšlenky — dělat řemeslo pořádně, bez
+          zkratek a bez kompromisů v kvalitě. Jaroslav Jedlička začínal
+          s renovací kamenných podlah v Jeseníku a jeho okolí, kde si
+          postupně vybudoval pověst řemeslníka, na kterého se dá spolehnout.
+        </p>
+        <p>
+          Za víc než 30 let praxe se tahle pověst rozšířila daleko za
+          hranice regionu — od léčebných lázní přes okresní úřady
+          a nemocnice až po hotely a rezidence v Praze a Ostravě. Dnes
+          realizujeme zakázky prakticky po celé České republice, ale přístup
+          zůstává stejný: každý povrch si zaslouží stejnou péči, ať jde
+          o malý byt, nebo velkou administrativní budovu.
+        </p>
       </div>
 
-      <div class="price-group">
-        <h2 class="price-group-title">Čištění</h2>
-        <div class="price-table">
-          <div class="price-row">
-            <span class="price-name">Strojní mytí dlažeb</span>
-            <span class="price-value">od 12 Kč/m²</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Chemické čištění podlah</span>
-            <span class="price-value">od 25 Kč/m²</span>
-          </div>
-          <div class="price-row">
-            <span class="price-name">Voskování, polymerace dlažeb, linolea</span>
-            <span class="price-value">od 38 Kč/m²</span>
-          </div>
+      <div class="story-stats">
+        <div class="stat-item">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">let praxe v oboru</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">realizací pro firmy, úřady a instituce</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Celá ČR</span>
+          <span class="stat-label">regionální působnost</span>
         </div>
       </div>
-
-      <p class="price-note">
-        Ceny jsou uvedeny bez DPH. Tento ceník je pouze orientační, po
-        dohodě zpracujeme individuální cenovou nabídku.
-      </p>
-
     </div>
   </section>
 
-  <!-- ===== Jak to funguje? ===== -->
-  <section class="steps" id="stepsSection">
+  <!-- ===== S čím se na nás obracíte ===== -->
+  <section class="needs-section" id="needsSection">
     <div class="container">
-      <h2 class="steps-title">Čtyři kroky od prohlídky po předání</h2>
-      <div class="steps-grid">
-        <div class="steps-item">
-          <span class="steps-index" aria-hidden="true">01</span>
-          <h3 class="steps-name">Prohlídka a posouzení</h3>
-          <p class="steps-text">Zdarma posoudíme stav povrchu a doporučíme řešení — renovaci, nebo výměnu.</p>
+      <h2 class="needs-title">S čím se na nás <em>nejčastěji obracíte</em></h2>
+      <p class="needs-lead">
+        Naši zákazníci nejčastěji řeší opotřebované, poškozené nebo zašlé
+        podlahy a kamenné povrchy, které ztrácejí svůj vzhled. Hledají
+        spolehlivou firmu, která práci provede kvalitně, v domluveném
+        termínu a za férovou cenu. Často si nejsou jistí, zda je výhodnější
+        povrch renovovat, nebo vyměnit, a potřebují odborné doporučení.
+        Důležitá je pro ně dlouhá životnost výsledku, minimální omezení
+        provozu a jistota, že investice bude mít smysl.
+      </p>
+
+      <ul class="needs-checklist">
+        <li>
+          <span class="needs-icon" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Dodržení termínů
+        </li>
+        <li>
+          <span class="needs-icon" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Partner schopný realizovat i větší a technicky náročné projekty
+        </li>
+        <li>
+          <span class="needs-icon" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Minimální odstávka provozu
+        </li>
+        <li>
+          <span class="needs-icon" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Odborné řešení místo univerzálních postupů
+        </li>
+        <li>
+          <span class="needs-icon" aria-hidden="true">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Kvalitní komunikace a spolehlivost
+        </li>
+      </ul>
+
+      <div class="needs-grid">
+        <div class="needs-card">
+          <h3>Co tím získáte</h3>
+          <ul>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Krásnou a reprezentativní podlahu nebo kamenný povrch
+            </li>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Úsporu nákladů oproti kompletní výměně
+            </li>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Vyšší hodnotu nemovitosti
+            </li>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Minimální omezení provozu během prací
+            </li>
+          </ul>
         </div>
-        <div class="steps-item">
-          <span class="steps-index" aria-hidden="true">02</span>
-          <h3 class="steps-name">Nabídka a plán</h3>
-          <p class="steps-text">Do několika dnů dostanete konkrétní nabídku s termínem realizace.</p>
+
+        <div class="needs-card needs-card-accent">
+          <h3>Jak k tomu přistupujeme</h3>
+          <ul>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Odborně poradíme, zda je výhodnější renovace, nebo výměna
+            </li>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Hledáme řešení, které vám ušetří peníze, pokud je to možné
+            </li>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Kvalitní vybavení pro téměř bezprašné provedení prací
+            </li>
+            <li>
+              <span class="needs-icon" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5.3 4.2 8.8 11 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Po dokončení předáváme vše v čistém a původním stavu — o úklid se nestaráte
+            </li>
+          </ul>
         </div>
-        <div class="steps-item">
-          <span class="steps-index" aria-hidden="true">03</span>
-          <h3 class="steps-name">Realizace bez odstávky</h3>
-          <p class="steps-text">Bezprašná technologie umožňuje pracovat i za částečného provozu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Certifikace ===== -->
+  <section class="cert-section">
+    <div class="container">
+      <div class="cert-card">
+        <span class="cert-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2 14.5 7.5 20.5 8.3 16 12.5 17.2 18.5 12 15.5 6.8 18.5 8 12.5 3.5 8.3 9.5 7.5 12 2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </span>
+        <h2 class="cert-title">Certifikace</h2>
+        <p class="cert-text">
+          Kvalitu naší práce potvrzuje i formální certifikát pro dodávky
+          podlah z litého teraca — technologie, která klade vysoké nároky
+          na přesnost provedení i použité materiály.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Technologie =====
+       POZOR: popis technologií je zatím orientační — doupraví se podle
+       skutečně používaného vybavení. -->
+  <section class="tech-section" id="techSection">
+    <div class="container">
+      <h2 class="tech-title">Technologie, se kterými pracujeme</h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <h3>Planetové broušení</h3>
+          <p>Vícekotoučové brusky s diamantovými segmenty v odstupňované zrnitosti pro rovný povrch i vysoký lesk.</p>
         </div>
-        <div class="steps-item">
-          <span class="steps-index" aria-hidden="true">04</span>
-          <h3 class="steps-name">Předání v čistém stavu</h3>
-          <p class="steps-text">Prostory předáváme uklizené — žádný následný úklid neřešíte.</p>
+        <div class="tech-item">
+          <h3>Bezprašný odsávací systém</h3>
+          <p>Přímé napojení brusek na profesionální vysavače zachytí prach už při vzniku — pracujeme i za částečného provozu.</p>
+        </div>
+        <div class="tech-item">
+          <h3>Vícestupňová impregnace</h3>
+          <p>Ochranné a impregnační přípravky uzavřou póry povrchu a prodlouží jeho životnost i odolnost proti znečištění.</p>
+        </div>
+        <div class="tech-item">
+          <h3>Diagnostika povrchu</h3>
+          <p>Před zahájením prací posoudíme stav a materiál povrchu, abychom zvolili přesný a účinný postup renovace.</p>
         </div>
       </div>
     </div>
@@ -773,10 +975,10 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   <!-- ===== Závěrečná CTA ===== -->
   <section class="page-cta">
     <div class="container">
-      <h2 class="page-cta-title">Chcete přesnou <em>cenovou nabídku?</em></h2>
+      <h2 class="page-cta-title">Chcete vidět, co pro vás <em>můžeme udělat?</em></h2>
       <p class="page-cta-text">
-        Pošlete pár fotek povrchu — do 24 hodin se ozveme s konkrétní
-        cenou na míru vašemu projektu.
+        Popište nám stav povrchu — poradíme, co se vyplatí, a připravíme
+        nezávaznou nabídku na míru.
       </p>
       <div class="page-cta-actions">
         <a class="btn cta-flip" href="kontakt.html">
@@ -795,7 +997,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
             </span>
           </span>
         </a>
-        <a class="btn-whatsapp cta-flip" href="https://wa.me/420777670021?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20cenovou%20nab%C3%ADdku." target="_blank" rel="noopener">
+        <a class="btn-whatsapp cta-flip" href="https://wa.me/420777670021?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20nez%C3%A1vaznou%20konzultaci." target="_blank" rel="noopener">
           <span class="flip-inner">
             <span class="flip-face flip-front">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.1h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.26-8.24 2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.83c0 4.55-3.7 8.24-8.27 8.24zm4.53-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06s.88 2.39 1 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
@@ -1009,9 +1211,9 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
     });
   }
 
-  /* --- 5. Nástup sekcí Ceník a Jak to funguje? při scrollu --------------- */
+  /* --- 5. Nástup sekcí Příběh a Technologie při scrollu ------------------ */
   (function scrollReveal(){
-    var ids = ["priceSection","stepsSection"];
+    var ids = ["storySection","needsSection","techSection"];
     ids.forEach(function(id){
       var section = document.getElementById(id);
       if(!section) return;
@@ -1020,7 +1222,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
           entries.forEach(function(en){
             if(en.isIntersecting){ section.classList.add("is-visible"); obs.unobserve(en.target); }
           });
-        }, {threshold:.1});
+        }, {threshold:.15});
         io.observe(section);
       } else {
         section.classList.add("is-visible");
