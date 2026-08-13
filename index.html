@@ -1778,8 +1778,11 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
           </p>
         </div>
 
-        <form class="contact-form" id="contactForm" method="POST" data-netlify="true" name="poptavka" novalidate>
-          <input type="hidden" name="form-name" value="poptavka">
+        <form class="contact-form" id="contactForm" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="ccd13ab9-7f40-45c1-9506-3a6469d95da8">
+          <input type="hidden" name="subject" value="Nová poptávka z webu Krystal">
+          <input type="hidden" name="from_name" value="Krystal — web">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="form-field" data-field="name">
               <label for="f-name">Jméno a příjmení</label>
@@ -2568,13 +2571,12 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
     });
 
     /* --- odeslání -----------------------------------------------------------
-       Formulář zpracovává Netlify Forms (formulář má data-netlify="true" +
-       skryté pole form-name) — odešle se přímo na Netlify a odtud e-mailem
-       na info@fa-krystal.cz, notifikaci je potřeba jednou zapnout v Netlify
-       administraci (Site settings → Forms → Form notifications). Pošle se
-       i s přiloženými fotkami. Pokud by odeslání selhalo (např. výpadek),
-       poptávka se pošle přes e-mailového klienta uživatele jako záloha. */
-    var FORM_ENDPOINT = window.location.pathname;
+       Formulář zpracovává Web3Forms (api.web3forms.com/submit) — odešle se
+       přímo na Web3Forms a odtud e-mailem na info@fa-krystal.cz podle
+       access_key v hidden poli. Pošle se i s přiloženými fotkami. Pokud by
+       odeslání selhalo (např. výpadek), poptávka se pošle přes e-mailového
+       klienta uživatele jako záloha. */
+    var FORM_ENDPOINT = "https://api.web3forms.com/submit";
 
     var noteEl = document.getElementById("formNote");
     var successEl = document.getElementById("formSuccess");
@@ -2625,24 +2627,24 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
       submitBtn.style.pointerEvents = "none";
       submitBtn.style.opacity = ".7";
 
-      if(FORM_ENDPOINT){
-        fetch(FORM_ENDPOINT, {method:"POST", body:new FormData(form)})
-          .then(function(res){
-            if(res.ok){
-              showSuccess("Ozveme se vám co nejdřív na uvedený telefon nebo e-mail.");
-            } else {
-              window.location.href = buildMailto();
-              showSuccess("Poptávku se nepodařilo odeslat rovnou — otevřeli jsme e-mailového klienta s vyplněnou zprávou, stačí ji odeslat. Fotky nám prosím pošlete přes WhatsApp vedle formuláře.");
-            }
-          })
-          .catch(function(){
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {"Accept": "application/json"},
+        body: new FormData(form)
+      })
+        .then(function(res){ return res.json().then(function(data){ return {ok:res.ok, data:data}; }); })
+        .then(function(result){
+          if(result.ok && result.data && result.data.success){
+            showSuccess("Ozveme se vám co nejdřív na uvedený telefon nebo e-mail.");
+          } else {
             window.location.href = buildMailto();
             showSuccess("Poptávku se nepodařilo odeslat rovnou — otevřeli jsme e-mailového klienta s vyplněnou zprávou, stačí ji odeslat. Fotky nám prosím pošlete přes WhatsApp vedle formuláře.");
-          });
-      } else {
-        window.location.href = buildMailto();
-        showSuccess("Otevřeli jsme e-mailového klienta s vyplněnou zprávou — stačí ji odeslat. Fotky bohužel nejdou poslat e-mailem automaticky, pošlete nám je prosím přes WhatsApp vedle formuláře.");
-      }
+          }
+        })
+        .catch(function(){
+          window.location.href = buildMailto();
+          showSuccess("Poptávku se nepodařilo odeslat rovnou — otevřeli jsme e-mailového klienta s vyplněnou zprávou, stačí ji odeslat. Fotky nám prosím pošlete přes WhatsApp vedle formuláře.");
+        });
     });
   })();
 
