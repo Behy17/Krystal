@@ -327,11 +327,35 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   background:#fff;
   padding:clamp(56px,8vw,96px) 0;
 }
+
+/* --- 7a. Filtr kategorií --------------------------------------- */
+.gallery-filters{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-bottom:clamp(28px,3.6vw,40px);
+}
+.filter-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 20px;
+  border-radius:999px;
+  background:#f7f5f3;
+  color:var(--ink-soft);
+  font-family:var(--font-ui);
+  font-size:.92rem;font-weight:500;
+  border:1px solid transparent;
+  transition:background .25s var(--ease-out), color .25s var(--ease-out);
+}
+.filter-pill:hover{color:var(--ink)}
+.filter-pill:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.filter-pill.is-active{background:var(--ink);color:#fff}
+.filter-pill .filter-count{font-size:.85em;opacity:.6}
+.filter-pill.is-active .filter-count{opacity:.75}
+
 .gallery{
   columns:4 300px;
   column-gap:14px;
 }
 .gallery-item{
+  position:relative;
   display:block;
   width:100%;
   margin:0 0 14px;
@@ -340,12 +364,29 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   overflow:hidden;
   cursor:zoom-in;
   background:var(--line);
+  opacity:1;transform:none;
+  transition:opacity .4s var(--ease-out), transform .4s var(--ease-out);
 }
+.gallery-item.is-hidden{display:none}
+.gallery-item.is-entering{opacity:0;transform:translateY(10px)}
 .gallery-item img{
   display:block;width:100%;height:auto;
   transition:transform .5s var(--ease-out);
 }
 .gallery-item:hover img{transform:scale(1.05)}
+.gallery-item-tag{
+  position:absolute;left:10px;bottom:10px;
+  padding:6px 13px;
+  border-radius:999px;
+  background:rgba(20,15,10,.72);
+  color:#fff;
+  font-size:.78rem;font-weight:500;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .3s var(--ease-out), transform .3s var(--ease-out);
+  pointer-events:none;
+}
+.gallery-item:hover .gallery-item-tag,
+.gallery-item:focus-visible .gallery-item-tag{opacity:1;transform:none}
 
 @media (max-width:900px){
   .gallery{columns:2 200px}
@@ -353,8 +394,11 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
 @media (max-width:520px){
   .gallery{columns:1}
 }
+@media (prefers-reduced-motion:reduce){
+  .gallery-item,.gallery-item-tag,.filter-pill{transition:none}
+}
 
-/* --- 7b. Lightbox ----------------------------------------------- */
+/* --- 7c. Lightbox ----------------------------------------------- */
 .lightbox{
   position:fixed;inset:0;z-index:300;
   background:rgba(20,15,10,.94);
@@ -643,96 +687,183 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   <!-- ===== Galerie ===== -->
   <section class="gallery-section">
     <div class="container">
+      <div class="gallery-filters" id="galleryFilters" role="tablist" aria-label="Filtrovat realizace podle typu práce">
+        <button class="filter-pill is-active" type="button" data-filter="all" role="tab" aria-selected="true">Vše <span class="filter-count">166</span></button>
+        <button class="filter-pill" type="button" data-filter="kamen" role="tab" aria-selected="false">Přírodní a umělý kámen <span class="filter-count">20</span></button>
+        <button class="filter-pill" type="button" data-filter="teraso" role="tab" aria-selected="false">Teraso <span class="filter-count">29</span></button>
+        <button class="filter-pill" type="button" data-filter="mramor" role="tab" aria-selected="false">Mramorové dlažby a schody <span class="filter-count">36</span></button>
+        <button class="filter-pill" type="button" data-filter="beton" role="tab" aria-selected="false">Pohledový beton <span class="filter-count">12</span></button>
+        <button class="filter-pill" type="button" data-filter="podlahy" role="tab" aria-selected="false">Podlahářské práce <span class="filter-count">21</span></button>
+        <button class="filter-pill" type="button" data-filter="drevo" role="tab" aria-selected="false">Dřevěné podlahy <span class="filter-count">36</span></button>
+        <button class="filter-pill" type="button" data-filter="sportovni" role="tab" aria-selected="false">Sportovní podlahy <span class="filter-count">12</span></button>
+      </div>
       <div class="gallery" id="gallery">
-        <a class="gallery-item" href="realizace-foto/IMG_1570-web.jpg"><img src="realizace-foto/IMG_1570-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_1579-web.jpg"><img src="realizace-foto/IMG_1579-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2261-web.jpg"><img src="realizace-foto/IMG_2261-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2262-web.jpg"><img src="realizace-foto/IMG_2262-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2278-web.jpg"><img src="realizace-foto/IMG_2278-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2290-web.jpg"><img src="realizace-foto/IMG_2290-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2380-web.jpg"><img src="realizace-foto/IMG_2380-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2384-web.jpg"><img src="realizace-foto/IMG_2384-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2388-web.jpg"><img src="realizace-foto/IMG_2388-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2389-web.jpg"><img src="realizace-foto/IMG_2389-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2390-web.jpg"><img src="realizace-foto/IMG_2390-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2391-web.jpg"><img src="realizace-foto/IMG_2391-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2761-web.jpg"><img src="realizace-foto/IMG_2761-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2762-web.jpg"><img src="realizace-foto/IMG_2762-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_2765-web.jpg"><img src="realizace-foto/IMG_2765-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3021-web.jpg"><img src="realizace-foto/IMG_3021-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3022-web.jpg"><img src="realizace-foto/IMG_3022-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3029-web.jpg"><img src="realizace-foto/IMG_3029-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3041-web.jpg"><img src="realizace-foto/IMG_3041-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3042-web.jpg"><img src="realizace-foto/IMG_3042-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3503-web.jpg"><img src="realizace-foto/IMG_3503-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_3999-web.jpg"><img src="realizace-foto/IMG_3999-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4002-web.jpg"><img src="realizace-foto/IMG_4002-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4005-web.jpg"><img src="realizace-foto/IMG_4005-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4011-web.jpg"><img src="realizace-foto/IMG_4011-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4014-web.jpg"><img src="realizace-foto/IMG_4014-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4098-web.jpg"><img src="realizace-foto/IMG_4098-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4099-web.jpg"><img src="realizace-foto/IMG_4099-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4100-web.jpg"><img src="realizace-foto/IMG_4100-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4101-web.jpg"><img src="realizace-foto/IMG_4101-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4463-web.jpg"><img src="realizace-foto/IMG_4463-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4465-web.jpg"><img src="realizace-foto/IMG_4465-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4466-web.jpg"><img src="realizace-foto/IMG_4466-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4467-web.jpg"><img src="realizace-foto/IMG_4467-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4469-web.jpg"><img src="realizace-foto/IMG_4469-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4473-web.jpg"><img src="realizace-foto/IMG_4473-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4476-web.jpg"><img src="realizace-foto/IMG_4476-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4482-web.jpg"><img src="realizace-foto/IMG_4482-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4578-web.jpg"><img src="realizace-foto/IMG_4578-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4579-web.jpg"><img src="realizace-foto/IMG_4579-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4596-web.jpg"><img src="realizace-foto/IMG_4596-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4603-web.jpg"><img src="realizace-foto/IMG_4603-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4604-web.jpg"><img src="realizace-foto/IMG_4604-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4605-web.jpg"><img src="realizace-foto/IMG_4605-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4609-web.jpg"><img src="realizace-foto/IMG_4609-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4610-web.jpg"><img src="realizace-foto/IMG_4610-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4611-web.jpg"><img src="realizace-foto/IMG_4611-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4636-web.jpg"><img src="realizace-foto/IMG_4636-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4637-web.jpg"><img src="realizace-foto/IMG_4637-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4638-web.jpg"><img src="realizace-foto/IMG_4638-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4642-web.jpg"><img src="realizace-foto/IMG_4642-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4643-web.jpg"><img src="realizace-foto/IMG_4643-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4644-web.jpg"><img src="realizace-foto/IMG_4644-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/IMG_4650-web.jpg"><img src="realizace-foto/IMG_4650-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1200" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/4328-web.jpg"><img src="realizace-foto/4328-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1197"></a>
-        <a class="gallery-item" href="realizace-foto/4329-web.jpg"><img src="realizace-foto/4329-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1197"></a>
-        <a class="gallery-item" href="realizace-foto/4330-web.jpg"><img src="realizace-foto/4330-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1197"></a>
-        <a class="gallery-item" href="realizace-foto/4474-web.jpg"><img src="realizace-foto/4474-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/4481-web.jpg"><img src="realizace-foto/4481-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/4482-web.jpg"><img src="realizace-foto/4482-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/4485-web.jpg"><img src="realizace-foto/4485-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5126-web.jpg"><img src="realizace-foto/5126-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5127-web.jpg"><img src="realizace-foto/5127-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5128-web.jpg"><img src="realizace-foto/5128-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5534-web.jpg"><img src="realizace-foto/5534-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5535-web.jpg"><img src="realizace-foto/5535-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5537-web.jpg"><img src="realizace-foto/5537-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/5538-web.jpg"><img src="realizace-foto/5538-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/6484-web.jpg"><img src="realizace-foto/6484-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/6633-web.jpg"><img src="realizace-foto/6633-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/6634-web.jpg"><img src="realizace-foto/6634-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/6635-web.jpg"><img src="realizace-foto/6635-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/6636-web.jpg"><img src="realizace-foto/6636-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/6649-web.jpg"><img src="realizace-foto/6649-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/6727-web.jpg"><img src="realizace-foto/6727-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/7223-web.jpg"><img src="realizace-foto/7223-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/7224-web.jpg"><img src="realizace-foto/7224-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/8090-web.jpg"><img src="realizace-foto/8090-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/8091-web.jpg"><img src="realizace-foto/8091-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/8092-web.jpg"><img src="realizace-foto/8092-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="720" height="1600"></a>
-        <a class="gallery-item" href="realizace-foto/8369-web.jpg"><img src="realizace-foto/8369-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/8370-web.jpg"><img src="realizace-foto/8370-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="720"></a>
-        <a class="gallery-item" href="realizace-foto/D4EFC5FF-A126-4242-A949-93B7AE779A35-web.jpg"><img src="realizace-foto/D4EFC5FF-A126-4242-A949-93B7AE779A35-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="900"></a>
-        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__1_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__1_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__2_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__2_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__3_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__3_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__4_-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__4_-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
-        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_40-web.jpg"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_40-web.jpg" alt="Realizace Krystal — renovace kamenné podlahy" loading="lazy" width="1600" height="1200"></a>
+        <a class="gallery-item" href="realizace-foto/IMG_1570-web.jpg" data-category="beton"><img src="realizace-foto/IMG_1570-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_1579-web.jpg" data-category="beton"><img src="realizace-foto/IMG_1579-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2261-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_2261-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2262-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_2262-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2278-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2278-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2290-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2290-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2380-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2380-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2384-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2384-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2388-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2388-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2389-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2389-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2390-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2390-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2391-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2391-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2761-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2761-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2762-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2762-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_2765-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_2765-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3021-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3021-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3022-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3022-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3029-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3029-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3041-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3041-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3042-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3042-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3503-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3503-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_3999-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_3999-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4002-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_4002-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4005-web.jpg" data-category="drevo"><img src="realizace-foto/IMG_4005-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4011-web.jpg" data-category="mramor"><img src="realizace-foto/IMG_4011-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4014-web.jpg" data-category="mramor"><img src="realizace-foto/IMG_4014-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4098-web.jpg" data-category="mramor"><img src="realizace-foto/IMG_4098-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4099-web.jpg" data-category="mramor"><img src="realizace-foto/IMG_4099-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4100-web.jpg" data-category="mramor"><img src="realizace-foto/IMG_4100-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4101-web.jpg" data-category="mramor"><img src="realizace-foto/IMG_4101-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4463-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4463-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4465-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4465-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4466-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4466-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4467-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4467-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4469-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4469-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4473-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4473-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4476-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4476-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4482-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4482-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4578-web.jpg" data-category="beton"><img src="realizace-foto/IMG_4578-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4579-web.jpg" data-category="beton"><img src="realizace-foto/IMG_4579-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4596-web.jpg" data-category="beton"><img src="realizace-foto/IMG_4596-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4603-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4603-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4604-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4604-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4605-web.jpg" data-category="podlahy"><img src="realizace-foto/IMG_4605-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4609-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4609-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4610-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4610-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4611-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4611-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4636-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4636-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4637-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4637-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4638-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4638-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4642-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4642-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4643-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4643-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4644-web.jpg" data-category="kamen"><img src="realizace-foto/IMG_4644-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/IMG_4650-web.jpg" data-category="beton"><img src="realizace-foto/IMG_4650-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/4328-web.jpg" data-category="drevo"><img src="realizace-foto/4328-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1197"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/4329-web.jpg" data-category="drevo"><img src="realizace-foto/4329-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1197"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/4330-web.jpg" data-category="drevo"><img src="realizace-foto/4330-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1197"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/4474-web.jpg" data-category="mramor"><img src="realizace-foto/4474-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/4481-web.jpg" data-category="mramor"><img src="realizace-foto/4481-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/4482-web.jpg" data-category="mramor"><img src="realizace-foto/4482-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/4485-web.jpg" data-category="mramor"><img src="realizace-foto/4485-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/5126-web.jpg" data-category="teraso"><img src="realizace-foto/5126-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/5127-web.jpg" data-category="teraso"><img src="realizace-foto/5127-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/5128-web.jpg" data-category="teraso"><img src="realizace-foto/5128-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/5534-web.jpg" data-category="teraso"><img src="realizace-foto/5534-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/5535-web.jpg" data-category="teraso"><img src="realizace-foto/5535-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/5537-web.jpg" data-category="teraso"><img src="realizace-foto/5537-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/5538-web.jpg" data-category="teraso"><img src="realizace-foto/5538-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/6484-web.jpg" data-category="beton"><img src="realizace-foto/6484-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="720" height="1600"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/6633-web.jpg" data-category="kamen"><img src="realizace-foto/6633-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/6634-web.jpg" data-category="kamen"><img src="realizace-foto/6634-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/6635-web.jpg" data-category="kamen"><img src="realizace-foto/6635-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/6636-web.jpg" data-category="kamen"><img src="realizace-foto/6636-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/6649-web.jpg" data-category="mramor"><img src="realizace-foto/6649-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/6727-web.jpg" data-category="drevo"><img src="realizace-foto/6727-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/7223-web.jpg" data-category="mramor"><img src="realizace-foto/7223-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="720" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/7224-web.jpg" data-category="mramor"><img src="realizace-foto/7224-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/8090-web.jpg" data-category="kamen"><img src="realizace-foto/8090-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/8091-web.jpg" data-category="kamen"><img src="realizace-foto/8091-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="720" height="1600"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/8092-web.jpg" data-category="mramor"><img src="realizace-foto/8092-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="720" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/8369-web.jpg" data-category="mramor"><img src="realizace-foto/8369-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/8370-web.jpg" data-category="mramor"><img src="realizace-foto/8370-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="720"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/D4EFC5FF-A126-4242-A949-93B7AE779A35-web.jpg" data-category="drevo"><img src="realizace-foto/D4EFC5FF-A126-4242-A949-93B7AE779A35-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="900"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39-web.jpg" data-category="beton"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__1_-web.jpg" data-category="beton"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__1_-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__2_-web.jpg" data-category="beton"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__2_-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__3_-web.jpg" data-category="beton"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__3_-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__4_-web.jpg" data-category="beton"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_39__4_-web.jpg" alt="Realizace Krystal — ošetření pohledového betonu" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Pohledový beton</span></a>
+        <a class="gallery-item" href="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_40-web.jpg" data-category="mramor"><img src="realizace-foto/WhatsApp_Image_2026-08-01_at_11_25_40-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-01-web.jpg" data-category="mramor"><img src="realizace-foto/real-01-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-02-web.jpg" data-category="mramor"><img src="realizace-foto/real-02-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-03-web.jpg" data-category="kamen"><img src="realizace-foto/real-03-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/real-04-web.jpg" data-category="podlahy"><img src="realizace-foto/real-04-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-05-web.jpg" data-category="podlahy"><img src="realizace-foto/real-05-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-06-web.jpg" data-category="podlahy"><img src="realizace-foto/real-06-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-07-web.jpg" data-category="mramor"><img src="realizace-foto/real-07-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="900" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-08-web.jpg" data-category="mramor"><img src="realizace-foto/real-08-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="902"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-09-web.jpg" data-category="teraso"><img src="realizace-foto/real-09-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-10-web.jpg" data-category="teraso"><img src="realizace-foto/real-10-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-11-web.jpg" data-category="mramor"><img src="realizace-foto/real-11-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-12-web.jpg" data-category="mramor"><img src="realizace-foto/real-12-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-13-web.jpg" data-category="sportovni"><img src="realizace-foto/real-13-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-14-web.jpg" data-category="podlahy"><img src="realizace-foto/real-14-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-15-web.jpg" data-category="teraso"><img src="realizace-foto/real-15-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-16-web.jpg" data-category="podlahy"><img src="realizace-foto/real-16-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-17-web.jpg" data-category="mramor"><img src="realizace-foto/real-17-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-18-web.jpg" data-category="mramor"><img src="realizace-foto/real-18-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-19-web.jpg" data-category="mramor"><img src="realizace-foto/real-19-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-20-web.jpg" data-category="mramor"><img src="realizace-foto/real-20-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-21-web.jpg" data-category="mramor"><img src="realizace-foto/real-21-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-22-web.jpg" data-category="mramor"><img src="realizace-foto/real-22-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-23-web.jpg" data-category="mramor"><img src="realizace-foto/real-23-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-24-web.jpg" data-category="mramor"><img src="realizace-foto/real-24-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-25-web.jpg" data-category="mramor"><img src="realizace-foto/real-25-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-26-web.jpg" data-category="mramor"><img src="realizace-foto/real-26-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-27-web.jpg" data-category="kamen"><img src="realizace-foto/real-27-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/real-28-web.jpg" data-category="kamen"><img src="realizace-foto/real-28-web.jpg" alt="Realizace Krystal — renovace přírodního nebo umělého kamene" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Přírodní a umělý kámen</span></a>
+        <a class="gallery-item" href="realizace-foto/real-29-web.jpg" data-category="sportovni"><img src="realizace-foto/real-29-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-30-web.jpg" data-category="sportovni"><img src="realizace-foto/real-30-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-31-web.jpg" data-category="sportovni"><img src="realizace-foto/real-31-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-32-web.jpg" data-category="sportovni"><img src="realizace-foto/real-32-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-33-web.jpg" data-category="podlahy"><img src="realizace-foto/real-33-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-34-web.jpg" data-category="podlahy"><img src="realizace-foto/real-34-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-35-web.jpg" data-category="podlahy"><img src="realizace-foto/real-35-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-36-web.jpg" data-category="teraso"><img src="realizace-foto/real-36-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-37-web.jpg" data-category="teraso"><img src="realizace-foto/real-37-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-38-web.jpg" data-category="teraso"><img src="realizace-foto/real-38-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-39-web.jpg" data-category="drevo"><img src="realizace-foto/real-39-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1200" height="1600"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-40-web.jpg" data-category="drevo"><img src="realizace-foto/real-40-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-41-web.jpg" data-category="drevo"><img src="realizace-foto/real-41-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-42-web.jpg" data-category="drevo"><img src="realizace-foto/real-42-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-43-web.jpg" data-category="drevo"><img src="realizace-foto/real-43-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-44-web.jpg" data-category="drevo"><img src="realizace-foto/real-44-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-45-web.jpg" data-category="drevo"><img src="realizace-foto/real-45-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-46-web.jpg" data-category="mramor"><img src="realizace-foto/real-46-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-47-web.jpg" data-category="podlahy"><img src="realizace-foto/real-47-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-48-web.jpg" data-category="teraso"><img src="realizace-foto/real-48-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-49-web.jpg" data-category="teraso"><img src="realizace-foto/real-49-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1425" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-50-web.jpg" data-category="teraso"><img src="realizace-foto/real-50-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-51-web.jpg" data-category="teraso"><img src="realizace-foto/real-51-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-52-web.jpg" data-category="teraso"><img src="realizace-foto/real-52-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-53-web.jpg" data-category="teraso"><img src="realizace-foto/real-53-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-54-web.jpg" data-category="teraso"><img src="realizace-foto/real-54-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-55-web.jpg" data-category="teraso"><img src="realizace-foto/real-55-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-56-web.jpg" data-category="teraso"><img src="realizace-foto/real-56-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-57-web.jpg" data-category="teraso"><img src="realizace-foto/real-57-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-58-web.jpg" data-category="teraso"><img src="realizace-foto/real-58-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-59-web.jpg" data-category="teraso"><img src="realizace-foto/real-59-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-60-web.jpg" data-category="teraso"><img src="realizace-foto/real-60-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-61-web.jpg" data-category="teraso"><img src="realizace-foto/real-61-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-62-web.jpg" data-category="teraso"><img src="realizace-foto/real-62-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-63-web.jpg" data-category="podlahy"><img src="realizace-foto/real-63-web.jpg" alt="Realizace Krystal — podlahářské práce" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Podlahářské práce</span></a>
+        <a class="gallery-item" href="realizace-foto/real-64-web.jpg" data-category="teraso"><img src="realizace-foto/real-64-web.jpg" alt="Realizace Krystal — renovace teraca" loading="lazy" width="1600" height="1198"><span class="gallery-item-tag">Teraso</span></a>
+        <a class="gallery-item" href="realizace-foto/real-65-web.jpg" data-category="drevo"><img src="realizace-foto/real-65-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-66-web.jpg" data-category="drevo"><img src="realizace-foto/real-66-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-67-web.jpg" data-category="drevo"><img src="realizace-foto/real-67-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-68-web.jpg" data-category="drevo"><img src="realizace-foto/real-68-web.jpg" alt="Realizace Krystal — renovace dřevěné podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Dřevěné podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-69-web.jpg" data-category="mramor"><img src="realizace-foto/real-69-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
+        <a class="gallery-item" href="realizace-foto/real-70-web.jpg" data-category="sportovni"><img src="realizace-foto/real-70-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-71-web.jpg" data-category="sportovni"><img src="realizace-foto/real-71-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-72-web.jpg" data-category="sportovni"><img src="realizace-foto/real-72-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-73-web.jpg" data-category="sportovni"><img src="realizace-foto/real-73-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-74-web.jpg" data-category="sportovni"><img src="realizace-foto/real-74-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-75-web.jpg" data-category="sportovni"><img src="realizace-foto/real-75-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-76-web.jpg" data-category="sportovni"><img src="realizace-foto/real-76-web.jpg" alt="Realizace Krystal — renovace sportovní podlahy" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Sportovní podlahy</span></a>
+        <a class="gallery-item" href="realizace-foto/real-77-web.jpg" data-category="mramor"><img src="realizace-foto/real-77-web.jpg" alt="Realizace Krystal — broušení a leštění mramorové dlažby" loading="lazy" width="1600" height="1200"><span class="gallery-item-tag">Mramorové dlažby a schody</span></a>
       </div>
     </div>
   </section>
@@ -1051,18 +1182,77 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
     });
   }
 
-  /* --- 5. Galerie — lightbox se šipkami a klávesovou navigací ------------ */
-  (function lightbox(){
+  /* --- 5. Galerie — filtr kategorií se šíří na lightbox i URL hash ------- */
+  (function galleryFilter(){
+    var filters = document.getElementById("galleryFilters");
     var items = Array.prototype.slice.call(document.querySelectorAll(".gallery-item"));
-    if(!items.length) return;
+    if(!filters || !items.length) return;
 
+    var pills = Array.prototype.slice.call(filters.querySelectorAll(".filter-pill"));
+
+    function applyFilter(cat, skipAnim){
+      var visible = 0;
+      items.forEach(function(el){
+        var match = cat === "all" || el.getAttribute("data-category") === cat;
+        if(match){
+          el.classList.remove("is-hidden");
+          if(!skipAnim && !reduce){
+            el.classList.add("is-entering");
+            el.style.transitionDelay = (Math.min(visible, 12) * 30) + "ms";
+            requestAnimationFrame(function(){
+              requestAnimationFrame(function(){ el.classList.remove("is-entering"); });
+            });
+          } else {
+            el.classList.remove("is-entering");
+            el.style.transitionDelay = "";
+          }
+          visible++;
+        } else {
+          el.classList.add("is-hidden");
+        }
+      });
+      pills.forEach(function(p){
+        var active = p.getAttribute("data-filter") === cat;
+        p.classList.toggle("is-active", active);
+        p.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    }
+
+    pills.forEach(function(p){
+      p.addEventListener("click", function(){
+        var cat = p.getAttribute("data-filter");
+        applyFilter(cat, false);
+        var url = cat === "all" ? window.location.pathname : "#" + cat;
+        history.replaceState(null, "", url);
+      });
+    });
+
+    var initial = "all";
+    var hash = window.location.hash.replace("#", "");
+    if(hash && pills.some(function(p){ return p.getAttribute("data-filter") === hash; })){
+      initial = hash;
+    }
+    applyFilter(initial, true);
+  })();
+
+  /* --- 6. Galerie — lightbox se šipkami a klávesovou navigací ------------ */
+  (function lightbox(){
     var lb = document.getElementById("lightbox");
     var lbImg = document.getElementById("lightboxImg");
+    if(!lb || !lbImg) return;
     var idx = 0;
 
-    function open(i){
-      idx = i;
-      lbImg.src = items[idx].getAttribute("href");
+    function visibleItems(){
+      return Array.prototype.slice.call(document.querySelectorAll(".gallery-item")).filter(function(el){
+        return !el.classList.contains("is-hidden");
+      });
+    }
+
+    function open(el){
+      var visible = visibleItems();
+      idx = visible.indexOf(el);
+      if(idx === -1) idx = 0;
+      lbImg.src = visible[idx].getAttribute("href");
       lb.classList.add("is-open");
       document.body.classList.add("is-locked");
     }
@@ -1071,24 +1261,28 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
       document.body.classList.remove("is-locked");
       lbImg.src = "";
     }
-    function next(){ open((idx + 1) % items.length); }
-    function prev(){ open((idx - 1 + items.length) % items.length); }
+    function step(dir){
+      var visible = visibleItems();
+      if(!visible.length) return;
+      idx = (idx + dir + visible.length) % visible.length;
+      lbImg.src = visible[idx].getAttribute("href");
+    }
 
-    items.forEach(function(el, i){
+    document.querySelectorAll(".gallery-item").forEach(function(el){
       el.addEventListener("click", function(e){
         e.preventDefault();
-        open(i);
+        open(el);
       });
     });
     document.getElementById("lightboxClose").addEventListener("click", close);
-    document.getElementById("lightboxNext").addEventListener("click", next);
-    document.getElementById("lightboxPrev").addEventListener("click", prev);
+    document.getElementById("lightboxNext").addEventListener("click", function(){ step(1); });
+    document.getElementById("lightboxPrev").addEventListener("click", function(){ step(-1); });
     lb.addEventListener("click", function(e){ if(e.target === lb) close(); });
     document.addEventListener("keydown", function(e){
       if(!lb.classList.contains("is-open")) return;
       if(e.key === "Escape") close();
-      if(e.key === "ArrowRight") next();
-      if(e.key === "ArrowLeft") prev();
+      if(e.key === "ArrowRight") step(1);
+      if(e.key === "ArrowLeft") step(-1);
     });
   })();
 })();
