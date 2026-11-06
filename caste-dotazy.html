@@ -150,13 +150,16 @@ h1,h2,h3,p{margin:0}
   position:sticky; top:0; z-index:100;
   height:var(--header-h);
   background:var(--white);
-  transition:height .45s var(--ease-out), box-shadow .45s var(--ease-out);
   box-shadow:0 1px 0 var(--line);
 }
-.site-header.is-scrolled{
-  height:var(--header-h-sm);
-  box-shadow:0 1px 0 var(--line), 0 10px 30px -20px rgba(0,0,0,.35);
+/* výška hlavičky se při scrollu NEMĚNÍ (sticky prvek v toku stránky by posouval
+   celý obsah pod sebou) — mění se jen stín přes průhlednost pseudo-prvku */
+.site-header::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  box-shadow:0 10px 30px -20px rgba(0,0,0,.35);
+  opacity:0;transition:opacity .35s var(--ease-out);
 }
+.site-header.is-scrolled::after{opacity:1}
 
 .header-inner{
   display:flex; align-items:center; gap:clamp(16px,3vw,48px);
@@ -166,10 +169,13 @@ h1,h2,h3,p{margin:0}
 .brand{display:flex;align-items:center;flex:0 0 auto}
 .brand img,.brand svg{
   height:clamp(30px,3.4vw,44px); width:auto;
-  transition:height .45s var(--ease-out);
+  transform-origin:left center;
+  transition:transform .35s var(--ease-out);
 }
+/* zmenšení loga přes transform (běží na GPU), ne přes height — změna výšky
+   způsobovala přepočet layoutu a škubání při scrollu */
 .site-header.is-scrolled .brand img,
-.site-header.is-scrolled .brand svg{height:clamp(26px,2.6vw,34px)}
+.site-header.is-scrolled .brand svg{transform:scale(.8)}
 
 .nav{margin-left:auto;display:flex;align-items:center;gap:clamp(18px,2.2vw,38px)}
 .nav-link{
@@ -909,7 +915,11 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   var ticking = false;
   function onScroll(){
     var y = window.pageYOffset || document.documentElement.scrollTop;
-    header.classList.toggle("is-scrolled", y > 10);
+    /* hystereze: zapnout až za 24 px, vypnout až pod 6 px — jinak se třída
+       při pomalém scrollu u hranice přepíná sem a tam */
+    var sc = header.classList.contains("is-scrolled");
+    if(!sc && y > 24) header.classList.add("is-scrolled");
+    else if(sc && y < 6) header.classList.remove("is-scrolled");
     ticking = false;
   }
   window.addEventListener("scroll", function(){
