@@ -8,19 +8,26 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="canonical" href="https://www.stone-krystal.cz/">
+<link rel="canonical" href="https://stone-krystal.cz/">
+
+<!-- LCP: hlavní fotka hera se musí začít stahovat hned, ne až po JS -->
+<link rel="preload" as="image" href="hero.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" href="fonts/michroma-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/saira-300-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Krystal">
 <meta property="og:locale" content="cs_CZ">
 <meta property="og:title" content="Krystal — renovace kamene, podlah a pohledového betonu">
 <meta property="og:description" content="Krystal — podlahářství, renovace a čištění přírodního i umělého kamene, ošetření pohledového betonu. Povrchy bez kompromisu.">
-<meta property="og:url" content="https://www.stone-krystal.cz/">
-<meta property="og:image" content="https://www.stone-krystal.cz/og-image.jpg">
+<meta property="og:url" content="https://stone-krystal.cz/">
+<meta property="og:image" content="https://stone-krystal.cz/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Krystal — renovace kamene, podlah a pohledového betonu">
 <meta name="twitter:description" content="Krystal — podlahářství, renovace a čištění přírodního i umělého kamene, ošetření pohledového betonu. Povrchy bez kompromisu.">
-<meta name="twitter:image" content="https://www.stone-krystal.cz/og-image.jpg">
+<meta name="twitter:image" content="https://stone-krystal.cz/og-image.jpg">
 
 
 <style>
@@ -350,6 +357,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
      čitelnost i nad světlejšími/lesklými místy fotky (lustr, podlaha) */
   text-shadow:0 2px 40px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.65);
 }
+.hero-title-sub{display:block;margin-top:.9rem;font-family:var(--font-ui);font-weight:500;font-size:clamp(.78rem,1.05vw,.98rem);letter-spacing:.2em;text-transform:uppercase;line-height:1.4;color:var(--orange)}
 
 .hero-claim{
   margin-top:clamp(10px,1.6vw,18px);
@@ -1383,14 +1391,17 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
 
   <div class="hero-media" id="heroMedia" aria-hidden="true">
     <div class="hero-fallback"></div>
-    <img class="hero-photo" id="heroPhoto" alt="" aria-hidden="true" decoding="async">
+    <img class="hero-photo" id="heroPhoto"
+         src="hero.webp" width="2400" height="1800"
+         fetchpriority="high" decoding="async"
+         alt="Renovovaná leštěná kamenná podlaha v hotelové recepci">
     <div class="hero-scrim"></div>
     <div class="hero-grain"></div>
   </div>
 
   <div class="container hero-inner" id="heroInner">
     <div class="hero-text">
-      <h1 class="hero-title line l1"><span>Krystal</span></h1>
+      <h1 class="hero-title line l1"><span>Krystal<span class="hero-title-sub"> renovace kamene, podlah a pohledového betonu</span></span></h1>
 
       <p class="hero-claim line l2">
         <span><span class="hl">#povrchy<b>bez</b>kompromisu</span></span>
@@ -1492,7 +1503,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
     </div>
 
     <div class="services-grid">
-      <a class="service-card" href="sluzby.html#kamen">
+      <a class="service-card" href="renovace-kamene.html">
         <h3 class="service-title">Renovace přírodního a umělého kamene</h3>
         <p class="service-text">Schody, římsy, podlahy i sokly.</p>
         <span class="service-more">Zjistit více
@@ -1500,7 +1511,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#teraso">
+      <a class="service-card" href="renovace-teraca.html">
         <h3 class="service-title">Renovace teraca</h3>
         <p class="service-text">Schody, římsy, podlahy i sokly.</p>
         <span class="service-more">Zjistit více
@@ -1508,7 +1519,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#mramor">
+      <a class="service-card" href="brouseni-lesteni-mramoru.html">
         <h3 class="service-title">Broušení a leštění mramoru</h3>
         <p class="service-text">Dlažby, obklady i schody do zrcadlového lesku.</p>
         <span class="service-more">Zjistit více
@@ -1516,7 +1527,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#beton">
+      <a class="service-card" href="osetreni-pohledoveho-betonu.html">
         <h3 class="service-title">Ošetření pohledového betonu</h3>
         <p class="service-text">Interiér, exteriér, fasády i schody.</p>
         <span class="service-more">Zjistit více
@@ -1524,7 +1535,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#podlahy">
+      <a class="service-card" href="podlaharske-prace.html">
         <h3 class="service-title">Podlahářské práce</h3>
         <p class="service-text">Nivelace, broušení, pokládka, měření vlhkosti, čištění i impregnace.</p>
         <span class="service-more">Zjistit více
@@ -1532,7 +1543,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#epoxid">
+      <a class="service-card" href="epoxidove-podlahy.html">
         <h3 class="service-title">Epoxidové a polyuretanové podlahy</h3>
         <p class="service-text">Bezespáré průmyslové i komerční povrchy na míru.</p>
         <span class="service-more">Zjistit více
@@ -1540,7 +1551,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#drevo">
+      <a class="service-card" href="renovace-drevenych-podlah.html">
         <h3 class="service-title">Renovace dřevěných podlah a parket</h3>
         <p class="service-text">Broušení, opravy, lakování, olejování i kartáčování.</p>
         <span class="service-more">Zjistit více
@@ -1548,7 +1559,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
         </span>
       </a>
 
-      <a class="service-card" href="sluzby.html#sportovni">
+      <a class="service-card" href="sportovni-podlahy.html">
         <h3 class="service-title">Sportovní podlahy v tělocvičnách</h3>
         <p class="service-text">Broušení, lakování, lajnování hřišť i výroba log.</p>
         <span class="service-more">Zjistit více
@@ -1981,8 +1992,9 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Krystal",
-  "image": "https://www.stone-krystal.cz/og-image.jpg",
-  "url": "https://www.stone-krystal.cz/",
+  "logo": "https://stone-krystal.cz/logo_transparent.png",
+  "image": "https://stone-krystal.cz/og-image.jpg",
+  "url": "https://stone-krystal.cz/",
   "telephone": "+420777670021",
   "email": "info@fa-krystal.cz",
   "priceRange": "$$",
@@ -2003,7 +2015,7 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script src="js/gsap-3.12.5.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
 <script>
 (function(){
   "use strict";
@@ -2038,23 +2050,28 @@ body.is-menu-open .menu-list a:nth-child(7){transition-delay:.50s}
     });
   })();
 
-  /* --- 2. Fotka do hera: nasadí se až po úspěšném načtení ---------------- */
+  /* --- 2. Fotka do hera -------------------------------------------------
+     src je napevno v HTML (+ <link rel=preload>), aby ji preload skener
+     prohlížeče našel okamžitě — je to LCP prvek stránky. Tady už jen
+     spouštíme prolnutí a řešíme fallback na JPEG, kdyby WebP selhalo.   */
   (function heroPhoto(){
     var el = document.getElementById("heroPhoto");
     if(!el) return;
-    var candidates = ["hero.webp","hero.jpg","hero.jpeg","hero.png","assets/hero.jpg"];
-    var i = 0;
-    function next(){
-      if(i >= candidates.length) return;      /* zůstane procedurální pozadí */
-      var probe = new Image();
-      probe.onload = function(){
-        el.src = probe.src;
-        el.classList.add("is-loaded");
-      };
-      probe.onerror = function(){ i++; next(); };
-      probe.src = candidates[i];
+
+    function reveal(){ el.classList.add("is-loaded"); }
+    function fail(){
+      /* jediný pokus o JPEG; když selže i ten, zůstane procedurální pozadí */
+      if(el.dataset.fallback) return;
+      el.dataset.fallback = "1";
+      el.src = "hero.jpg";
     }
-    next();
+
+    el.addEventListener("load", reveal);
+    el.addEventListener("error", fail);
+
+    /* Obrázek se načítá už během parsování HTML, takže load i error mohly
+       proběhnout dřív, než se dostal ke slovu tenhle skript. Dorovnáme to. */
+    if(el.complete){ el.naturalWidth > 0 ? reveal() : fail(); }
   })();
 
   /* --- 3. Spuštění vstupních animací ------------------------------------ */

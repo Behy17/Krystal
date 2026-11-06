@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.stone-krystal.cz/sitemap.xml
+Sitemap: https://stone-krystal.cz/sitemap.xml
